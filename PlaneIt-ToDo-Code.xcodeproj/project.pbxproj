@@ -1,0 +1,612 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F5CB63022AF27F9F004DA389 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CB63012AF27F9F004DA389 /* AppDelegate.swift */; };
+		F5CB63042AF27F9F004DA389 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CB63032AF27F9F004DA389 /* SceneDelegate.swift */; };
+		F5CB63062AF27F9F004DA389 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CB63052AF27F9F004DA389 /* ViewController.swift */; };
+		F5CB63092AF27F9F004DA389 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5CB63072AF27F9F004DA389 /* Main.storyboard */; };
+		F5CB630B2AF27FA0004DA389 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5CB630A2AF27FA0004DA389 /* Assets.xcassets */; };
+		F5CB630E2AF27FA0004DA389 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5CB630C2AF27FA0004DA389 /* LaunchScreen.storyboard */; };
+		F5CB63192AF27FA0004DA389 /* PlaneIt_ToDo_CodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CB63182AF27FA0004DA389 /* PlaneIt_ToDo_CodeTests.swift */; };
+		F5CB63232AF27FA0004DA389 /* PlaneIt_ToDo_CodeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CB63222AF27FA0004DA389 /* PlaneIt_ToDo_CodeUITests.swift */; };
+		F5CB63252AF27FA0004DA389 /* PlaneIt_ToDo_CodeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CB63242AF27FA0004DA389 /* PlaneIt_ToDo_CodeUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F5CB63152AF27FA0004DA389 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F5CB62F62AF27F9F004DA389 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F5CB62FD2AF27F9F004DA389;
+			remoteInfo = "PlaneIt-ToDo-Code";
+		};
+		F5CB631F2AF27FA0004DA389 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F5CB62F62AF27F9F004DA389 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F5CB62FD2AF27F9F004DA389;
+			remoteInfo = "PlaneIt-ToDo-Code";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F5CB62FE2AF27F9F004DA389 /* PlaneIt-ToDo-Code.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PlaneIt-ToDo-Code.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5CB63012AF27F9F004DA389 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F5CB63032AF27F9F004DA389 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		F5CB63052AF27F9F004DA389 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F5CB63082AF27F9F004DA389 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F5CB630A2AF27FA0004DA389 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F5CB630D2AF27FA0004DA389 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F5CB630F2AF27FA0004DA389 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5CB63142AF27FA0004DA389 /* PlaneIt-ToDo-CodeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PlaneIt-ToDo-CodeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5CB63182AF27FA0004DA389 /* PlaneIt_ToDo_CodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneIt_ToDo_CodeTests.swift; sourceTree = "<group>"; };
+		F5CB631E2AF27FA0004DA389 /* PlaneIt-ToDo-CodeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PlaneIt-ToDo-CodeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5CB63222AF27FA0004DA389 /* PlaneIt_ToDo_CodeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneIt_ToDo_CodeUITests.swift; sourceTree = "<group>"; };
+		F5CB63242AF27FA0004DA389 /* PlaneIt_ToDo_CodeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneIt_ToDo_CodeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F5CB62FB2AF27F9F004DA389 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5CB63112AF27FA0004DA389 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5CB631B2AF27FA0004DA389 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F5CB62F52AF27F9F004DA389 = {
+			isa = PBXGroup;
+			children = (
+				F5CB63002AF27F9F004DA389 /* PlaneIt-ToDo-Code */,
+				F5CB63172AF27FA0004DA389 /* PlaneIt-ToDo-CodeTests */,
+				F5CB63212AF27FA0004DA389 /* PlaneIt-ToDo-CodeUITests */,
+				F5CB62FF2AF27F9F004DA389 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F5CB62FF2AF27F9F004DA389 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F5CB62FE2AF27F9F004DA389 /* PlaneIt-ToDo-Code.app */,
+				F5CB63142AF27FA0004DA389 /* PlaneIt-ToDo-CodeTests.xctest */,
+				F5CB631E2AF27FA0004DA389 /* PlaneIt-ToDo-CodeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F5CB63002AF27F9F004DA389 /* PlaneIt-ToDo-Code */ = {
+			isa = PBXGroup;
+			children = (
+				F5CB63012AF27F9F004DA389 /* AppDelegate.swift */,
+				F5CB63032AF27F9F004DA389 /* SceneDelegate.swift */,
+				F5CB63052AF27F9F004DA389 /* ViewController.swift */,
+				F5CB63072AF27F9F004DA389 /* Main.storyboard */,
+				F5CB630A2AF27FA0004DA389 /* Assets.xcassets */,
+				F5CB630C2AF27FA0004DA389 /* LaunchScreen.storyboard */,
+				F5CB630F2AF27FA0004DA389 /* Info.plist */,
+			);
+			path = "PlaneIt-ToDo-Code";
+			sourceTree = "<group>";
+		};
+		F5CB63172AF27FA0004DA389 /* PlaneIt-ToDo-CodeTests */ = {
+			isa = PBXGroup;
+			children = (
+				F5CB63182AF27FA0004DA389 /* PlaneIt_ToDo_CodeTests.swift */,
+			);
+			path = "PlaneIt-ToDo-CodeTests";
+			sourceTree = "<group>";
+		};
+		F5CB63212AF27FA0004DA389 /* PlaneIt-ToDo-CodeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F5CB63222AF27FA0004DA389 /* PlaneIt_ToDo_CodeUITests.swift */,
+				F5CB63242AF27FA0004DA389 /* PlaneIt_ToDo_CodeUITestsLaunchTests.swift */,
+			);
+			path = "PlaneIt-ToDo-CodeUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F5CB62FD2AF27F9F004DA389 /* PlaneIt-ToDo-Code */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F5CB63282AF27FA0004DA389 /* Build configuration list for PBXNativeTarget "PlaneIt-ToDo-Code" */;
+			buildPhases = (
+				F5CB62FA2AF27F9F004DA389 /* Sources */,
+				F5CB62FB2AF27F9F004DA389 /* Frameworks */,
+				F5CB62FC2AF27F9F004DA389 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PlaneIt-ToDo-Code";
+			productName = "PlaneIt-ToDo-Code";
+			productReference = F5CB62FE2AF27F9F004DA389 /* PlaneIt-ToDo-Code.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F5CB63132AF27FA0004DA389 /* PlaneIt-ToDo-CodeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F5CB632B2AF27FA0004DA389 /* Build configuration list for PBXNativeTarget "PlaneIt-ToDo-CodeTests" */;
+			buildPhases = (
+				F5CB63102AF27FA0004DA389 /* Sources */,
+				F5CB63112AF27FA0004DA389 /* Frameworks */,
+				F5CB63122AF27FA0004DA389 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F5CB63162AF27FA0004DA389 /* PBXTargetDependency */,
+			);
+			name = "PlaneIt-ToDo-CodeTests";
+			productName = "PlaneIt-ToDo-CodeTests";
+			productReference = F5CB63142AF27FA0004DA389 /* PlaneIt-ToDo-CodeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F5CB631D2AF27FA0004DA389 /* PlaneIt-ToDo-CodeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F5CB632E2AF27FA0004DA389 /* Build configuration list for PBXNativeTarget "PlaneIt-ToDo-CodeUITests" */;
+			buildPhases = (
+				F5CB631A2AF27FA0004DA389 /* Sources */,
+				F5CB631B2AF27FA0004DA389 /* Frameworks */,
+				F5CB631C2AF27FA0004DA389 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F5CB63202AF27FA0004DA389 /* PBXTargetDependency */,
+			);
+			name = "PlaneIt-ToDo-CodeUITests";
+			productName = "PlaneIt-ToDo-CodeUITests";
+			productReference = F5CB631E2AF27FA0004DA389 /* PlaneIt-ToDo-CodeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F5CB62F62AF27F9F004DA389 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					F5CB62FD2AF27F9F004DA389 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					F5CB63132AF27FA0004DA389 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = F5CB62FD2AF27F9F004DA389;
+					};
+					F5CB631D2AF27FA0004DA389 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = F5CB62FD2AF27F9F004DA389;
+					};
+				};
+			};
+			buildConfigurationList = F5CB62F92AF27F9F004DA389 /* Build configuration list for PBXProject "PlaneIt-ToDo-Code" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F5CB62F52AF27F9F004DA389;
+			productRefGroup = F5CB62FF2AF27F9F004DA389 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F5CB62FD2AF27F9F004DA389 /* PlaneIt-ToDo-Code */,
+				F5CB63132AF27FA0004DA389 /* PlaneIt-ToDo-CodeTests */,
+				F5CB631D2AF27FA0004DA389 /* PlaneIt-ToDo-CodeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F5CB62FC2AF27F9F004DA389 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5CB630E2AF27FA0004DA389 /* LaunchScreen.storyboard in Resources */,
+				F5CB630B2AF27FA0004DA389 /* Assets.xcassets in Resources */,
+				F5CB63092AF27F9F004DA389 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5CB63122AF27FA0004DA389 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5CB631C2AF27FA0004DA389 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F5CB62FA2AF27F9F004DA389 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5CB63062AF27F9F004DA389 /* ViewController.swift in Sources */,
+				F5CB63022AF27F9F004DA389 /* AppDelegate.swift in Sources */,
+				F5CB63042AF27F9F004DA389 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5CB63102AF27FA0004DA389 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5CB63192AF27FA0004DA389 /* PlaneIt_ToDo_CodeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5CB631A2AF27FA0004DA389 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5CB63232AF27FA0004DA389 /* PlaneIt_ToDo_CodeUITests.swift in Sources */,
+				F5CB63252AF27FA0004DA389 /* PlaneIt_ToDo_CodeUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F5CB63162AF27FA0004DA389 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F5CB62FD2AF27F9F004DA389 /* PlaneIt-ToDo-Code */;
+			targetProxy = F5CB63152AF27FA0004DA389 /* PBXContainerItemProxy */;
+		};
+		F5CB63202AF27FA0004DA389 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F5CB62FD2AF27F9F004DA389 /* PlaneIt-ToDo-Code */;
+			targetProxy = F5CB631F2AF27FA0004DA389 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F5CB63072AF27F9F004DA389 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F5CB63082AF27F9F004DA389 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F5CB630C2AF27FA0004DA389 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F5CB630D2AF27FA0004DA389 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F5CB63262AF27FA0004DA389 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F5CB63272AF27FA0004DA389 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F5CB63292AF27FA0004DA389 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QYJ996Y32P;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "PlaneIt-ToDo-Code/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "vladislavikys.PlaneIt-ToDo-Code";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F5CB632A2AF27FA0004DA389 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QYJ996Y32P;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "PlaneIt-ToDo-Code/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "vladislavikys.PlaneIt-ToDo-Code";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F5CB632C2AF27FA0004DA389 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QYJ996Y32P;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "vladislavikys.PlaneIt-ToDo-CodeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PlaneIt-ToDo-Code.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PlaneIt-ToDo-Code";
+			};
+			name = Debug;
+		};
+		F5CB632D2AF27FA0004DA389 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QYJ996Y32P;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "vladislavikys.PlaneIt-ToDo-CodeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PlaneIt-ToDo-Code.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PlaneIt-ToDo-Code";
+			};
+			name = Release;
+		};
+		F5CB632F2AF27FA0004DA389 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QYJ996Y32P;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "vladislavikys.PlaneIt-ToDo-CodeUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "PlaneIt-ToDo-Code";
+			};
+			name = Debug;
+		};
+		F5CB63302AF27FA0004DA389 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QYJ996Y32P;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "vladislavikys.PlaneIt-ToDo-CodeUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "PlaneIt-ToDo-Code";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F5CB62F92AF27F9F004DA389 /* Build configuration list for PBXProject "PlaneIt-ToDo-Code" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5CB63262AF27FA0004DA389 /* Debug */,
+				F5CB63272AF27FA0004DA389 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F5CB63282AF27FA0004DA389 /* Build configuration list for PBXNativeTarget "PlaneIt-ToDo-Code" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5CB63292AF27FA0004DA389 /* Debug */,
+				F5CB632A2AF27FA0004DA389 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F5CB632B2AF27FA0004DA389 /* Build configuration list for PBXNativeTarget "PlaneIt-ToDo-CodeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5CB632C2AF27FA0004DA389 /* Debug */,
+				F5CB632D2AF27FA0004DA389 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F5CB632E2AF27FA0004DA389 /* Build configuration list for PBXNativeTarget "PlaneIt-ToDo-CodeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5CB632F2AF27FA0004DA389 /* Debug */,
+				F5CB63302AF27FA0004DA389 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F5CB62F62AF27F9F004DA389 /* Project object */;
+}
