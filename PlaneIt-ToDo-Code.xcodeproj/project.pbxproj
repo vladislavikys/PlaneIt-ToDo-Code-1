@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F52B637D2AF664AD005B8E0E /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52B637C2AF664AD005B8E0E /* TaskModel.swift */; };
+		F57EBE2D2AF3DFE400C98231 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57EBE2C2AF3DFE400C98231 /* CustomCell.swift */; };
+		F59C5FDC2AF56E95007EF99B /* CoffeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59C5FDB2AF56E95007EF99B /* CoffeeViewController.swift */; };
+		F59C5FDE2AF56EBE007EF99B /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59C5FDD2AF56EBE007EF99B /* TaskViewController.swift */; };
 		F5CB63022AF27F9F004DA389 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CB63012AF27F9F004DA389 /* AppDelegate.swift */; };
 		F5CB63042AF27F9F004DA389 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CB63032AF27F9F004DA389 /* SceneDelegate.swift */; };
-		F5CB63062AF27F9F004DA389 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CB63052AF27F9F004DA389 /* ViewController.swift */; };
+		F5CB63062AF27F9F004DA389 /* ToDoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CB63052AF27F9F004DA389 /* ToDoListViewController.swift */; };
 		F5CB63092AF27F9F004DA389 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5CB63072AF27F9F004DA389 /* Main.storyboard */; };
 		F5CB630B2AF27FA0004DA389 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5CB630A2AF27FA0004DA389 /* Assets.xcassets */; };
 		F5CB630E2AF27FA0004DA389 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5CB630C2AF27FA0004DA389 /* LaunchScreen.storyboard */; };
@@ -36,10 +40,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F52B637C2AF664AD005B8E0E /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
+		F57EBE2C2AF3DFE400C98231 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		F59C5FDB2AF56E95007EF99B /* CoffeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeViewController.swift; sourceTree = "<group>"; };
+		F59C5FDD2AF56EBE007EF99B /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 		F5CB62FE2AF27F9F004DA389 /* PlaneIt-ToDo-Code.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PlaneIt-ToDo-Code.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5CB63012AF27F9F004DA389 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5CB63032AF27F9F004DA389 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F5CB63052AF27F9F004DA389 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F5CB63052AF27F9F004DA389 /* ToDoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewController.swift; sourceTree = "<group>"; };
 		F5CB63082AF27F9F004DA389 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F5CB630A2AF27FA0004DA389 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F5CB630D2AF27FA0004DA389 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -101,7 +109,11 @@
 			children = (
 				F5CB63012AF27F9F004DA389 /* AppDelegate.swift */,
 				F5CB63032AF27F9F004DA389 /* SceneDelegate.swift */,
-				F5CB63052AF27F9F004DA389 /* ViewController.swift */,
+				F5CB63052AF27F9F004DA389 /* ToDoListViewController.swift */,
+				F59C5FDB2AF56E95007EF99B /* CoffeeViewController.swift */,
+				F59C5FDD2AF56EBE007EF99B /* TaskViewController.swift */,
+				F57EBE2C2AF3DFE400C98231 /* CustomCell.swift */,
+				F52B637C2AF664AD005B8E0E /* TaskModel.swift */,
 				F5CB63072AF27F9F004DA389 /* Main.storyboard */,
 				F5CB630A2AF27FA0004DA389 /* Assets.xcassets */,
 				F5CB630C2AF27FA0004DA389 /* LaunchScreen.storyboard */,
@@ -258,9 +270,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5CB63062AF27F9F004DA389 /* ViewController.swift in Sources */,
+				F5CB63062AF27F9F004DA389 /* ToDoListViewController.swift in Sources */,
 				F5CB63022AF27F9F004DA389 /* AppDelegate.swift in Sources */,
+				F59C5FDC2AF56E95007EF99B /* CoffeeViewController.swift in Sources */,
+				F57EBE2D2AF3DFE400C98231 /* CustomCell.swift in Sources */,
 				F5CB63042AF27F9F004DA389 /* SceneDelegate.swift in Sources */,
+				F59C5FDE2AF56EBE007EF99B /* TaskViewController.swift in Sources */,
+				F52B637D2AF664AD005B8E0E /* TaskModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,7 +471,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "vladislavikys.PlaneIt-ToDo-Code";
+				PRODUCT_BUNDLE_IDENTIFIER = "vladislavikys.PlaneIt-ToDo-Code-1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -483,7 +499,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "vladislavikys.PlaneIt-ToDo-Code";
+				PRODUCT_BUNDLE_IDENTIFIER = "vladislavikys.PlaneIt-ToDo-Code-1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

@@ -6,3 +6,24 @@
 //
 
 import Foundation
+
+struct Task {
+    var title: String
+    var isCompleted: Bool
+}
+var tasks: [Task] = []
+
+
+// добавления новой задачи в массив
+func addTask(title: String) {
+    let newTask = Task(title: title, isCompleted: false)
+    tasks.append(newTask)
+}
+// отметки  как выполненной
+func completeTask(at index: Int) {
+    guard index >= 0 && index < tasks.count else {
+        return
+    }
+    
+    tasks[index].isCompleted = true
+}
