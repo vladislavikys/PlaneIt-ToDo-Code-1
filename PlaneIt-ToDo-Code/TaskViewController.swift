@@ -10,6 +10,7 @@ import UIKit
 
 class TaskViewController : UIViewController {
     
+    let toDoVC = ToDoListViewController()
     let nameLabel = UITextField()
     let descriptionTextView = UITextView()
     
@@ -78,11 +79,13 @@ class TaskViewController : UIViewController {
     
     
     @objc private func backButtonTapped() {
-        navigationController?.popViewController(animated: true)
+        dismiss(animated: true)
+        
+    
     }
     
     @objc private func saveButtonTapped() {
-      
-    }
+            
+        }
 
 }
