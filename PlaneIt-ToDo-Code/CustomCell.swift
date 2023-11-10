@@ -4,8 +4,11 @@
 //
 //  Created by Влад on 2.11.23.
 //
+
 import UIKit
 class CustomCell: UITableViewCell {
+    
+    var editButtonAction: (() -> Void)?
     
     var checkmarkButton: UIButton!
     var noteLabel: UILabel!
@@ -14,25 +17,12 @@ class CustomCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        // Создание чек-марка
-        checkmarkButton = UIButton()
-        checkmarkButton.setImage(UIImage(named: "checkmarkImage"), for: .normal)
-        checkmarkButton.setImage(UIImage(named: "checkmarkImageSelected"), for: .selected)
-        checkmarkButton = UIButton(frame: CGRect(x: 10, y: 12, width: 24, height: 24))
-        checkmarkButton.contentMode = .scaleAspectFit
-        contentView.addSubview(checkmarkButton)
-        
-        // Создание  заметки
-        noteLabel = UILabel(frame: CGRect(x: 56, y: 16, width: frame.width - 120, height: 24))
-        contentView.addSubview(noteLabel)
-        
-        // Создание  редактирования заметки
-        editButton = UIButton(type: .system)
-        editButton.frame = CGRect(x: frame.width + 12 , y: 10, width: 29, height: 29)
-        editButton.setImage(UIImage(named: "edit"), for: .normal)
-        editButton.imageView?.contentMode = .scaleAspectFit
-        editButton.imageView?.tintColor = UIColor(hex: "99C779")
-        contentView.addSubview(editButton)
+        let cellSpacing: CGFloat = 10 // Размер отступа между ячейками
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: cellSpacing, left: 0, bottom: cellSpacing, right: 0))
+       
+        setupCheckmark()
+        setupNote()
+        setupEdit()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -40,11 +30,33 @@ class CustomCell: UITableViewCell {
     }
     
     @objc func checkmarkButtonTapped() {
-            checkmarkButton.isSelected = !checkmarkButton.isSelected
-            if checkmarkButton.isSelected {
-                checkmarkButton.setImage(UIImage(named: "checkmarkImageSelected"), for: .normal)
-            } else {
-                checkmarkButton.setImage(UIImage(named: "checkmarkImage"), for: .normal)
-            }
+
         }
+    @objc func editButtonTapped() {
+        editButtonAction?()
+    }
+}
+
+extension CustomCell{
+    func setupCheckmark(){
+        checkmarkButton = UIButton()
+        checkmarkButton.setImage(UIImage(named: "checkmarkImage"), for: .normal)
+        checkmarkButton.setImage(UIImage(named: "checkmarkImageSelected"), for: .selected)
+        checkmarkButton = UIButton(frame: CGRect(x: 10, y: 12, width: 24, height: 24))
+        checkmarkButton.contentMode = .scaleAspectFit
+        contentView.addSubview(checkmarkButton)
+    }
+    func setupNote(){
+        noteLabel = UILabel(frame: CGRect(x: 56, y: 16, width: frame.width - 120, height: 24))
+        contentView.addSubview(noteLabel)
+    }
+    func setupEdit(){
+         editButton = UIButton(type: .system)
+         editButton.frame = CGRect(x: frame.width + 12 , y: 10, width: 29, height: 29)
+         editButton.setImage(UIImage(named: "edit"), for: .normal)
+         editButton.imageView?.contentMode = .scaleAspectFit
+         editButton.imageView?.tintColor = UIColor(hex: "99C779")
+         editButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
+         contentView.addSubview(editButton)
+    }
 }

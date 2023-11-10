@@ -8,6 +8,8 @@
 import UIKit
 
 
+
+
 extension UIView {
     
     func addShadow() {
@@ -41,15 +43,14 @@ extension UIView {
         layer.masksToBounds = false
     }
 }
-extension TaskViewController: TaskViewControllerDelegate{
-    func completedCreateTask(data: Task){
-        
-    }
-}
 extension ToDoListViewController: TaskViewControllerDelegate{
+    //для добавления только новой строки,
+    //что позволит избежать полной перезагрузки таблицы
+    //и обеспечит более плавную анимацию
     func completedCreateTask(task: Task) {
         tasks.append(task)
-        tableView.reloadData()
+        let indexPath = IndexPath(row: tasks.count - 1, section: 0)
+        tableView.insertRows(at: [indexPath], with: .automatic)
     }
 }
 
