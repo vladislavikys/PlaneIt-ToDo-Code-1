@@ -8,16 +8,23 @@
 
 import UIKit
 
-class TaskViewController : UIViewController {
+
+protocol TaskViewControllerDelegate{
+    func completedCreateTask(task: Task)
     
-    let toDoVC = ToDoListViewController()
+}
+
+class TaskViewController : UIViewController, UITextViewDelegate, UITextFieldDelegate{
+    
     let nameLabel = UITextField()
     let descriptionTextView = UITextView()
+    
+    var delegate: TaskViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        let navItem = UINavigationItem(title: "")
         let navBar = UINavigationBar()
         view.addSubview(navBar)
         navBar.translatesAutoresizingMaskIntoConstraints = false
@@ -25,7 +32,9 @@ class TaskViewController : UIViewController {
         navBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         navBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         
-        let navItem = UINavigationItem(title: "")
+        navBar.tintColor = UIColor(hex: "28313A")
+        navBar.barTintColor = UIColor(hex: "28313A")
+        
         let backButton = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(backButtonTapped))
         backButton.tintColor = UIColor(hex: "ACF478")
         
@@ -36,7 +45,7 @@ class TaskViewController : UIViewController {
         navItem.rightBarButtonItem = saveButton
         navBar.setItems([navItem], animated: false)
         
-        
+        nameLabel.delegate = self
         nameLabel.text = " Name"
         nameLabel.textColor = .gray
         nameLabel.backgroundColor = UIColor(hex: "333E49")
@@ -49,11 +58,8 @@ class TaskViewController : UIViewController {
         nameLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
         nameLabel.layer.cornerRadius = 21
         
-        
-        
-        
-
-        
+        descriptionTextView.delegate = self
+        descriptionTextView.delegate = self
         descriptionTextView.text = " Desccription"
         descriptionTextView.font = .systemFont(ofSize: 20)
         descriptionTextView.autocapitalizationType = .words
@@ -68,24 +74,20 @@ class TaskViewController : UIViewController {
         descriptionTextView.layer.cornerRadius = 20
         descriptionTextView.layer.masksToBounds = true
         
-        
-    
-        
         navBar.backgroundColor = UIColor(hex: "28313A")
         view.backgroundColor = UIColor(hex: "333E49")
-        navigationController?.pushViewController(self, animated: true)
-}
-    
-    
+        
+    }
     
     @objc private func backButtonTapped() {
         dismiss(animated: true)
-        
-    
     }
     
     @objc private func saveButtonTapped() {
-            
+        if let textName = nameLabel.text, let textDecript = descriptionTextView.text{
+            let task = Task(title: textName, description: textDecript, isCompleted: false)
+            delegate?.completedCreateTask(task: task)
+            dismiss(animated: true)
         }
-
+    }
 }

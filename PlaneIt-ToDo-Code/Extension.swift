@@ -41,3 +41,15 @@ extension UIView {
         layer.masksToBounds = false
     }
 }
+extension TaskViewController: TaskViewControllerDelegate{
+    func completedCreateTask(data: Task){
+        
+    }
+}
+extension ToDoListViewController: TaskViewControllerDelegate{
+    func completedCreateTask(task: Task) {
+        tasks.append(task)
+        tableView.reloadData()
+    }
+}
+
