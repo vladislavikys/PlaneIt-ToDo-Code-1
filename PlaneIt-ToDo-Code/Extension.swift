@@ -6,10 +6,6 @@
 //
 
 import UIKit
-
-
-
-
 extension UIView {
     
     func addShadow() {
@@ -52,5 +48,9 @@ extension ToDoListViewController: TaskViewControllerDelegate{
         let indexPath = IndexPath(row: tasks.count - 1, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
     }
+    func completedEditTask(task: Task, at indexPath: IndexPath) {
+            tasks[indexPath.row] = task
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
 }
 

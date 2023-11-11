@@ -7,143 +7,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9A549B23-417A-4035-85C5-31F8B260102B"
+            uuid = "5E0AF63D-F2DE-4AB7-98BF-8AEBDD08189E"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PlaneIt-ToDo-Code/ToDoListViewController.swift"
+            filePath = "PlaneIt-ToDo-Code/TaskViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "ToDoListViewController"
-            landmarkType = "21">
-            <Locations>
-               <Location
-                  uuid = "9A549B23-417A-4035-85C5-31F8B260102B - cc89ea9aca7bd088"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PlaneIt_ToDo_Code.ToDoListViewController.editButtonTapped() -&gt; ()"
-                  moduleName = "PlaneIt-ToDo-Code"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vlad/Desktop/swift%20project%20all/my%20project/PlaneIt-ToDo-Code/PlaneIt-ToDo-Code/ToDoListViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "121"
-                  endingLineNumber = "121"
-                  offsetFromSymbolStart = "1100">
-               </Location>
-               <Location
-                  uuid = "9A549B23-417A-4035-85C5-31F8B260102B - cc89ea9aca7bd088"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PlaneIt_ToDo_Code.ToDoListViewController.editButtonTapped() -&gt; ()"
-                  moduleName = "PlaneIt-ToDo-Code"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vlad/Desktop/swift%20project%20all/my%20project/PlaneIt-ToDo-Code/PlaneIt-ToDo-Code/ToDoListViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "121"
-                  endingLineNumber = "121"
-                  offsetFromSymbolStart = "912">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D7614278-0B3A-40B6-8B41-54EF4D2793F2"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PlaneIt-ToDo-Code/ToDoListViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
-            landmarkName = "unknown"
-            landmarkType = "0">
-            <Locations>
-               <Location
-                  uuid = "D7614278-0B3A-40B6-8B41-54EF4D2793F2 - cc89ea9aca7bd04a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PlaneIt_ToDo_Code.ToDoListViewController.editButtonTapped() -&gt; ()"
-                  moduleName = "PlaneIt-ToDo-Code"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vlad/Desktop/swift%20project%20all/my%20project/PlaneIt-ToDo-Code/PlaneIt-ToDo-Code/ToDoListViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "123"
-                  endingLineNumber = "123"
-                  offsetFromSymbolStart = "1192">
-               </Location>
-               <Location
-                  uuid = "D7614278-0B3A-40B6-8B41-54EF4D2793F2 - cc89ea9aca7bd04a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PlaneIt_ToDo_Code.ToDoListViewController.editButtonTapped() -&gt; ()"
-                  moduleName = "PlaneIt-ToDo-Code"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vlad/Desktop/swift%20project%20all/my%20project/PlaneIt-ToDo-Code/PlaneIt-ToDo-Code/ToDoListViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "123"
-                  endingLineNumber = "123"
-                  offsetFromSymbolStart = "1100">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "99810B17-9C60-4DC9-9261-46F2E1E539E3"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PlaneIt-ToDo-Code/ToDoListViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "init?(hex:)"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "99810B17-9C60-4DC9-9261-46F2E1E539E3 - cc89ea9aca7bd7c6"
+                  uuid = "5E0AF63D-F2DE-4AB7-98BF-8AEBDD08189E - 786673812337add6"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "PlaneIt_ToDo_Code.ToDoListViewController.editButtonTapped() -&gt; ()"
+                  symbolName = "PlaneIt_ToDo_Code.TaskViewController.viewDidLoad() -&gt; ()"
                   moduleName = "PlaneIt-ToDo-Code"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vlad/Desktop/swift%20project%20all/my%20project/PlaneIt-ToDo-Code/PlaneIt-ToDo-Code/ToDoListViewController.swift"
+                  urlString = "file:///Users/vlad/Desktop/swift%20project%20all/my%20project/PlaneIt-ToDo-Code/PlaneIt-ToDo-Code/TaskViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "127"
-                  endingLineNumber = "127"
-                  offsetFromSymbolStart = "1336">
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "168">
                </Location>
                <Location
-                  uuid = "99810B17-9C60-4DC9-9261-46F2E1E539E3 - cc89ea9aca7bd025"
+                  uuid = "5E0AF63D-F2DE-4AB7-98BF-8AEBDD08189E - 786673812337add6"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "PlaneIt_ToDo_Code.ToDoListViewController.editButtonTapped() -&gt; ()"
+                  symbolName = "PlaneIt_ToDo_Code.TaskViewController.viewDidLoad() -&gt; ()"
                   moduleName = "PlaneIt-ToDo-Code"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vlad/Desktop/swift%20project%20all/my%20project/PlaneIt-ToDo-Code/PlaneIt-ToDo-Code/ToDoListViewController.swift"
+                  urlString = "file:///Users/vlad/Desktop/swift%20project%20all/my%20project/PlaneIt-ToDo-Code/PlaneIt-ToDo-Code/TaskViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "126"
-                  endingLineNumber = "126"
-                  offsetFromSymbolStart = "1244">
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "300">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -151,97 +55,65 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2387D2B1-66EB-4D73-AEA8-DE189B65304D"
+            uuid = "83F60C18-0079-4F18-A01E-DC3440D201E2"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PlaneIt-ToDo-Code/ToDoListViewController.swift"
+            filePath = "PlaneIt-ToDo-Code/TaskViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "init?(hex:)"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "2387D2B1-66EB-4D73-AEA8-DE189B65304D - cc89ea9aca7bd7c6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PlaneIt_ToDo_Code.ToDoListViewController.editButtonTapped() -&gt; ()"
-                  moduleName = "PlaneIt-ToDo-Code"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vlad/Desktop/swift%20project%20all/my%20project/PlaneIt-ToDo-Code/PlaneIt-ToDo-Code/ToDoListViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "127"
-                  endingLineNumber = "127"
-                  offsetFromSymbolStart = "1336">
-               </Location>
-               <Location
-                  uuid = "2387D2B1-66EB-4D73-AEA8-DE189B65304D - cc89ea9aca7bd7c6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PlaneIt_ToDo_Code.ToDoListViewController.editButtonTapped() -&gt; ()"
-                  moduleName = "PlaneIt-ToDo-Code"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vlad/Desktop/swift%20project%20all/my%20project/PlaneIt-ToDo-Code/PlaneIt-ToDo-Code/ToDoListViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "127"
-                  endingLineNumber = "127"
-                  offsetFromSymbolStart = "1308">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "47DEE015-E92C-460B-B069-19B7845A94B4"
+            uuid = "02FAE202-D9A5-4E12-BE0A-35E74E933835"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PlaneIt-ToDo-Code/ToDoListViewController.swift"
+            filePath = "PlaneIt-ToDo-Code/TaskViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "init?(hex:)"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "47DEE015-E92C-460B-B069-19B7845A94B4 - cc89ea9aca7bd06b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PlaneIt_ToDo_Code.ToDoListViewController.editButtonTapped() -&gt; ()"
-                  moduleName = "PlaneIt-ToDo-Code"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vlad/Desktop/swift%20project%20all/my%20project/PlaneIt-ToDo-Code/PlaneIt-ToDo-Code/ToDoListViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "124"
-                  endingLineNumber = "124"
-                  offsetFromSymbolStart = "1244">
-               </Location>
-               <Location
-                  uuid = "47DEE015-E92C-460B-B069-19B7845A94B4 - cc89ea9aca7bd06b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PlaneIt_ToDo_Code.ToDoListViewController.editButtonTapped() -&gt; ()"
-                  moduleName = "PlaneIt-ToDo-Code"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vlad/Desktop/swift%20project%20all/my%20project/PlaneIt-ToDo-Code/PlaneIt-ToDo-Code/ToDoListViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "124"
-                  endingLineNumber = "124"
-                  offsetFromSymbolStart = "1140">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "66FEFAC0-BF31-467D-82EE-D65A2F245521"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PlaneIt-ToDo-Code/TaskViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4C5C8C34-991E-447D-9C33-0A2D632718AA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PlaneIt-ToDo-Code/TaskViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

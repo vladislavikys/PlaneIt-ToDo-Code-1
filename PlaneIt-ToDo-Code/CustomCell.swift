@@ -1,10 +1,3 @@
-//
-//  CustomCell.swift
-//  PlaneIt-ToDo-Code
-//
-//  Created by Влад on 2.11.23.
-//
-
 import UIKit
 class CustomCell: UITableViewCell {
     

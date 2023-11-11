@@ -76,16 +76,40 @@ extension ToDoListViewController: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
-    
-    @objc func editButtonTapped() {
-        // Логика для редактирования заметки
+    // отмена выделение ячейки
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        return nil
     }
+    @objc func editButtonTapped(at indexPath: IndexPath) {
+        let selectedTask = tasks[indexPath.row]
+
+        // Создать экземпляр TaskViewController и передать выбранную задачу
+        let taskViewController = TaskViewController()
+        taskViewController.task = selectedTask
+        taskViewController.isEdit = true
+        taskViewController.editingIndexPath = indexPath
+        taskViewController.delegate = self
+
+        // Открыть экран редактирования задачи
+        present(taskViewController, animated: true, completion: nil)
+    }
+
 }
 
 extension ToDoListViewController: TaskViewControllerDelegate{
+    func completedEditTask(task: Task, at indexPath: IndexPath) {
+        // Обновляем задачу в массиве задач
+        tasks[indexPath.row] = task
+        // Обновляем соответствующую строку в tableView
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+
+    }
+    
     func completedCreateTask(task: Task) {
         tasks.append(task)
-        tableView.reloadData()
+        // Вставляем новую строку в tableView
+        let indexPath = IndexPath(row: tasks.count - 1, section: 0)
+        tableView.insertRows(at: [indexPath], with: .automatic)
     }
     
 }
@@ -114,7 +138,14 @@ extension UIColor{
 
 extension ToDoListViewController{
     func editTask(at indexPath: IndexPath) {
-        // Логика для редактирования задачи с индексом indexPath.row
+        let taskViewController = TaskViewController()
+        // Конфигурация TaskViewController перед его показом
+        taskViewController.delegate = self
+        taskViewController.task = tasks[indexPath.row]
+        taskViewController.isEdit = true
+        taskViewController.editingIndexPath = indexPath
+        // Показываем TaskViewController
+        present(taskViewController, animated: true, completion: nil)
     }
     func setupImageView() {
         imageView = UIImageView(frame:CGRect(x: 0, y: 0, width: view.frame.width, height: 200) )

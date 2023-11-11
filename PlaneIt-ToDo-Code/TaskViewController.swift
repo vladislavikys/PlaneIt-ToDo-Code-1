@@ -1,15 +1,7 @@
-
-//
-//  TaskViewController.swift
-//  PlaneIt-ToDo-Code
-//
-//  Created by Влад on 3.11.23.
-//
-
 import UIKit
 protocol TaskViewControllerDelegate{
     func completedCreateTask(task: Task)
-    
+    func completedEditTask(task: Task, at indexPath: IndexPath) 
 }
 class TaskViewController : UIViewController, UITextViewDelegate, UITextFieldDelegate{
     
@@ -17,11 +9,21 @@ class TaskViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     let descriptionTextView = UITextView()
     let navBar = UINavigationBar()
     
+    var task:Task?
+    var isEdit:Bool = false
+    var editingIndexPath: IndexPath?
+    
     var delegate: TaskViewControllerDelegate?
     
     override func viewDidLoad() {
-        print(nameLabel)
         super.viewDidLoad()
+        
+        if isEdit, let taskToEdit = task {
+                // Заполнить элементы интерфейса данными задачи
+                nameLabel.text = taskToEdit.title
+                descriptionTextView.text = taskToEdit.description
+            }
+        
         let navItem = UINavigationItem(title: "")
        
         view.addSubview(navBar)
@@ -63,18 +65,37 @@ class TaskViewController : UIViewController, UITextViewDelegate, UITextFieldDele
     }
     
     @objc private func saveButtonTapped() {
-        if let textName = nameLabel.text, let textDecript = descriptionTextView.text{
-            let task = Task(title: textName, description: textDecript, isCompleted: false)
-            delegate?.completedCreateTask(task: task)
-            dismiss(animated: true)
-        }
+        guard let textName = nameLabel.text, let textDescription = descriptionTextView.text else {
+                // Возможно, показать сообщение об ошибке пользователю
+                return
+            }
+        if isEdit, let editingIndexPath = editingIndexPath {
+                // Если редактируем существующую задачу
+                let updatedTask = Task(title: textName, description: textDescription, isCompleted: task?.isCompleted ?? false)
+            // Обновляем задачу
+                    task?.title = textName
+                    task?.description = textDescription
+                    // Вызываем метод делегата, чтобы обновить задачу в массиве и таблице
+                    delegate?.completedEditTask(task: updatedTask, at: editingIndexPath)
+                } else {
+                    // Создаем новую задачу
+                    let newTask = Task(title: textName, description: textDescription, isCompleted: false)
+                    // Вызываем метод делегата, чтобы добавить новую задачу в массив и таблицу
+                    delegate?.completedCreateTask(task: newTask)
+                }
+
+                // Закрываем TaskViewController после сохранения
+                dismiss(animated: true, completion: nil)
+            }
     }
-}
+
 
 extension TaskViewController{
     func setupNameLabel(){
         nameLabel.delegate = self
-        nameLabel.text = " Name"
+        if isEdit == false{
+            nameLabel.text = " Name"
+        }
         nameLabel.textColor = .gray
         nameLabel.backgroundColor = UIColor(hex: "333E49")
         nameLabel.clipsToBounds = true
@@ -101,7 +122,10 @@ extension TaskViewController{
     
     func setupDescriptionTextView(){
         descriptionTextView.delegate = self
-        descriptionTextView.text = " Desccription"
+        
+        if isEdit == false{
+            descriptionTextView.text = " Desccription"
+        }
         descriptionTextView.font = .systemFont(ofSize: 20)
         descriptionTextView.autocapitalizationType = .words
         descriptionTextView.textColor = .white
