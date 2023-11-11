@@ -53,4 +53,12 @@ extension ToDoListViewController: TaskViewControllerDelegate{
             tableView.reloadRows(at: [indexPath], with: .automatic)
         }
 }
+extension ToDoListViewController: CustomCellDelegate {
+    func checkmarkTapped(at indexPath: IndexPath) {
+        // Инвертируем состояние isCompleted для выбранной задачи
+        tasks[indexPath.row].isCompleted.toggle()
+        // Обновляем соответствующую строку в tableView
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+    }
+}
 

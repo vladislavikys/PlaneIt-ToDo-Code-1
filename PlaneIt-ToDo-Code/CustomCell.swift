@@ -1,11 +1,23 @@
 import UIKit
+
+protocol CustomCellDelegate: AnyObject {
+    func checkmarkTapped(at indexPath: IndexPath)
+}
+
 class CustomCell: UITableViewCell {
-    
-    var editButtonAction: (() -> Void)?
-    
+
     var checkmarkButton: UIButton!
     var noteLabel: UILabel!
+    
     var editButton: UIButton!
+    var editButtonAction: (() -> Void)?
+    
+    weak var delegate: CustomCellDelegate?
+    var indexPath: IndexPath!
+    var checkmarkButtonAction: (() -> Void)?
+    
+
+        
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -22,12 +34,17 @@ class CustomCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc func checkmarkButtonTapped() {
-
-        }
+    func setupEditButton() {
+            editButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
+    }
     @objc func editButtonTapped() {
         editButtonAction?()
     }
+    @objc func checkmarkButtonTapped() {
+            delegate?.checkmarkTapped(at: indexPath)
+        }
+    
+    
 }
 
 extension CustomCell{

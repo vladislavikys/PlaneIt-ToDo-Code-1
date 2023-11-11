@@ -2,7 +2,9 @@ import UIKit
 class ToDoListViewController: UIViewController {
     
     var tasks: [Task] = [Task(title: "yes", description: "", isCompleted: true),
-                         Task(title: "no", description: "", isCompleted: false)]
+                         Task(title: "no", description: "", isCompleted: false),
+                         Task(title: "maybe", description: "", isCompleted: false),
+                         Task(title: "later", description: "", isCompleted: false)]
     
     var imageView: UIImageView!
     var tableView: UITableView!
@@ -27,6 +29,13 @@ class ToDoListViewController: UIViewController {
         taskViewController.delegate = self
         present(taskViewController, animated: true, completion: nil)
     }
+    @objc func checkmarkButtonTapped(sender: UIButton) {
+        guard let cell = sender.superview?.superview as? CustomCell, let indexPath = tableView.indexPath(for: cell) else {
+            return
+        }
+        checkmarkTapped(at: indexPath)
+    }
+    
 }
 
 extension ToDoListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -51,6 +60,8 @@ extension ToDoListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! CustomCell
+        cell.delegate = self
+        cell.indexPath = indexPath
         
         cell.noteLabel.text = tasks[indexPath.row].title
         cell.checkmarkButton.setImage(UIImage(named: "checkmarkImage"), for: .normal)
@@ -68,12 +79,14 @@ extension ToDoListViewController: UITableViewDataSource, UITableViewDelegate {
         cell.layer.cornerRadius = 10
         cell.editButton.tintColor = UIColor(hex: "ACF478")
         
+        
+        cell.checkmarkButton.addTarget(self, action: #selector(checkmarkButtonTapped), for: .touchUpInside)
+        
         cell.editButtonAction = { [weak self, indexPath] in
             self?.editTask(at: indexPath)
         }
-        
-        // cell.editButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
-        
+        cell.setupEditButton()
+    
         return cell
     }
     // отмена выделение ячейки
@@ -111,7 +124,15 @@ extension ToDoListViewController: TaskViewControllerDelegate{
         let indexPath = IndexPath(row: tasks.count - 1, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
     }
-    
+}
+
+extension ToDoListViewController: CustomCellDelegate {
+    func checkmarkTapped(at indexPath: IndexPath) {
+        // Инвертируем состояние isCompleted для выбранной задачи
+        tasks[indexPath.row].isCompleted.toggle()
+        // Обновляем соответствующую строку в tableView
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+    }
 }
 
 extension UIColor{
