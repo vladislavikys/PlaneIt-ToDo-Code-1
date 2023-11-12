@@ -24,10 +24,11 @@ class ToDoListViewController: UIViewController {
     
     // Обработчик нажатия на кнопку "Coffee"
     @objc func coffeeButtonTapped() {
-        let coffeeViewController = CoffeeViewController()
-        coffeeViewController.modalPresentationStyle  = .overCurrentContext
-        present(coffeeViewController, animated: true, completion: nil)
-    }
+            let coffeeViewController = CoffeeViewController()
+            coffeeViewController.modalPresentationStyle = .overCurrentContext
+            coffeeViewController.modalTransitionStyle = .crossDissolve
+            present(coffeeViewController, animated: false, completion: nil)
+        }
     
     // Обработчик нажатия на кнопку "Add Task"
     @objc func openTaskScreen() {
