@@ -1,10 +1,10 @@
 import UIKit
 class ToDoListViewController: UIViewController {
     
-    var tasks: [Task] = [Task(title: "yes", description: "", isCompleted: true),
-                         Task(title: "no", description: "", isCompleted: false),
-                         Task(title: "maybe", description: "", isCompleted: false),
-                         Task(title: "later", description: "", isCompleted: false)]
+    var tasks: [Task] = [Task(title: "yes", description: "yes", isCompleted: true),
+                         Task(title: "no", description: "no", isCompleted: false),
+                         Task(title: "maybe", description: "maybe", isCompleted: false),
+                         Task(title: "later", description: "later", isCompleted: false)]
     
     var imageView: UIImageView!
     var tableView: UITableView!
