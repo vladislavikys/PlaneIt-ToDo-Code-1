@@ -15,6 +15,8 @@ class ToDoListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //для тестов чтоюы сразу кофк
+        
         // Установка изображения, таблицы и кнопок
         setupImageView()
         setupTableView()
@@ -55,17 +57,17 @@ extension ToDoListViewController: UITableViewDataSource, UITableViewDelegate {
         return tasks.count
     }
     
-    // Высота заголовка секции
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20 // Высота пространства между секциями
-    }
-    
-    // Заголовок для секции
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = .clear // Задаем прозрачный фон для отступа
-        return headerView
-    }
+//    // Высота заголовка секции
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 20 // Высота пространства между секциями
+//    }
+//    
+//    // Заголовок для секции
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let headerView = UIView()
+//        headerView.backgroundColor = .clear // Задаем прозрачный фон для отступа
+//        return headerView
+//    }
     
     // Высота футера секции
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

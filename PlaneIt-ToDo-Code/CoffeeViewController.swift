@@ -52,46 +52,18 @@ class CoffeeViewController: UIViewController   {
         
         setupCoffeeCup()
         setupImageView()
-        setupTitile()
+
+        
         setupNavigationBar()
-        setupCollectionView()
+       //setupCollectionView()
         setupPicker()
         setupInfoButton()
         
     }
     
-    func setupTitile(){
-        // Настраиваем заголовок coffeeTitle
-        coffeeTitle.text = "Coffee control"
-        coffeeTitle.textColor = #colorLiteral(red: 0.6592550278, green: 0.8111829162, blue: 0.5474096537, alpha: 1)
-        coffeeTitle.font = UIFont(name: "Verdana", size: 25)
-        coffeeTitle.textAlignment = .center
-        coffeeTitle.translatesAutoresizingMaskIntoConstraints = false
-        
-        // Настраиваем coffeeTitleView
-        coffeeTitleView.backgroundColor = #colorLiteral(red: 0.1568627451, green: 0.1921568627, blue: 0.2274509804, alpha: 1)
-        coffeeTitleView.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(coffeeTitleView)
-        view.addSubview(coffeeTitle)
-        NSLayoutConstraint.activate([
-            // Констрейнты для coffeeTitle
-            coffeeTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            coffeeTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 10),
-            coffeeTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 15),
-            coffeeTitle.heightAnchor.constraint(equalToConstant: 20),
-            coffeeTitle.widthAnchor.constraint(equalToConstant: 300),
-            // Констрейнты для coffeeTitleView
-            coffeeTitleView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            coffeeTitleView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            coffeeTitleView.heightAnchor.constraint(equalToConstant: 50),
-            coffeeTitleView.topAnchor.constraint(equalTo: view.topAnchor)])
-        
-    }
-    
     func setupImageView() {
         imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 200))
-        imageView.image = UIImage(named: "helloImage")
+        imageView.image = UIImage(named: "coffee_image_VC")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         view.addSubview(imageView)
@@ -114,8 +86,11 @@ class CoffeeViewController: UIViewController   {
             navBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             navBar.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
-        
-        navBar.tintColor = UIColor(hex: "28313A")
+        // Настройка цвета и шрифта текста заголовка
+            navBar.titleTextAttributes = [
+                NSAttributedString.Key.foregroundColor: UIColor(hex: "ACF478")!,
+                NSAttributedString.Key.font: UIFont(name: "Verdana", size: 20) ?? UIFont.systemFont(ofSize: 20)
+            ]
         navBar.barTintColor = UIColor(hex: "28313A")
     }
     
@@ -153,36 +128,38 @@ class CoffeeViewController: UIViewController   {
     func setupCoffeeCup(){
         // Настраиваем изображение coffeeCupImage
         coffeeCupImage.image = UIImage(named: "coffeeCup")
+        coffeeCupImage.tintColor = UIColor(hex:"CFCFCF")
         view.addSubview(coffeeCupImage)
         coffeeCupImage.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([coffeeCupImage.widthAnchor.constraint(equalToConstant: 100),
-                                     coffeeCupImage.heightAnchor.constraint(equalToConstant: 120),
-                                     coffeeCupImage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 60),
+        NSLayoutConstraint.activate([coffeeCupImage.widthAnchor.constraint(equalToConstant: 100),//Устанавливает констрейнт на ширину
+                                     coffeeCupImage.heightAnchor.constraint(equalToConstant: 120),//Устанавливает констрейнт на высоту
+                                     coffeeCupImage.centerYAnchor.constraint(equalTo: view.bottomAnchor, constant: -240),
                                      coffeeCupImage.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -50)])
-       
     }
     func setupPicker(){
         // Настраиваем pickerView
-        pickerView.backgroundColor = .white
-        pickerView.alpha = 0.90
+        pickerView.backgroundColor = UIColor(hex: "28313A")
+        pickerView.alpha = 0.5
         pickerView.translatesAutoresizingMaskIntoConstraints = false
         pickerView.layer.cornerRadius = 10
+        
         
         view.addSubview(pickerView)
         view.addSubview(picker)
         // Настраиваем picker
         picker.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([// Констрейнты для picker
-            picker.widthAnchor.constraint(equalToConstant: 100),
-            picker.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 50),
-            picker.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 50),
-            picker.heightAnchor.constraint(equalTo: view.heightAnchor, constant: -475),
+            picker.widthAnchor.constraint(equalToConstant: 100),//Устанавливает ширину picker в 100 точек.
+            picker.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 50),//Размещает центр picker по горизонтали в центре основног (view), вправо
+            picker.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 180),//Размещает центр picker по вертикали в центре основного  (view),  вниз
+            picker.heightAnchor.constraint(equalTo: view.heightAnchor, constant: -680),//Устанавливает высоту picker так, чтобы она занимала высоту основного представления (view) за вычетом
+                                                                               //580 impiric method
+            
             // Констрейнты для pickerView
-            pickerView.widthAnchor.constraint(equalToConstant: 230),
-            pickerView.heightAnchor.constraint(equalToConstant: 150),
-            pickerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            pickerView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 55)])
-     
+            pickerView.widthAnchor.constraint(equalToConstant: 230),//Устанавливает ширину pickerView в 230 точек.
+            pickerView.heightAnchor.constraint(equalToConstant: 150),//Устанавливает высоту pickerView в 150 точек.
+            pickerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),//Размещает центр pickerView по горизонтали в центре   (view).
+            pickerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150)])
     }
     
     func setupInfoButton(){
@@ -227,6 +204,16 @@ extension CoffeeViewController: UIPickerViewDataSource, UIPickerViewDelegate{
         pickerCount.count
         //Каждая строка будет представлять число от 0 до 10, так как pickerCount создан как массив от 0 до 10 включительно.
     }
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+            let title = "\(row)"
+            let color = UIColor(hex: "CFCFCF")!
+
+            let attributes: [NSAttributedString.Key: Any] = [
+                .foregroundColor: color,
+                
+            ]
+        return NSAttributedString(string: title, attributes: attributes)
+    }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return "\(row)"
@@ -235,6 +222,7 @@ extension CoffeeViewController: UIPickerViewDataSource, UIPickerViewDelegate{
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedCount = row
+        print(selectedCount)
         // устанавливается равным выбранной строке, то есть значению переменной row.
         DispatchQueue.main.async {
             self.collectionView.reloadData()
