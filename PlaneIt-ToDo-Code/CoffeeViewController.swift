@@ -205,7 +205,6 @@ class CoffeeViewController: UIViewController   {
             circleInfo.heightAnchor.constraint(equalToConstant: 60),
             circleInfo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 13),
             circleInfo.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -17)])
-     
     }
     
     @objc private func backButtonTapped() {
