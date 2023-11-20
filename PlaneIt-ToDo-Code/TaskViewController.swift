@@ -15,6 +15,7 @@ class TaskViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
     
     // Данные задачи
     var task: Task?
+    
     var isEdit: Bool = false
     var editingIndexPath: IndexPath?
     
@@ -59,11 +60,19 @@ class TaskViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
     
     // Методы UITextViewDelegate
     func textViewDidBeginEditing(_ textView: UITextView) {
-        // Можно добавить логику при начале редактирования описания
+        //  добавить логику при начале редактирования описания
+        if nameLabel.text == "Name" {
+            nameLabel.text = ""
+            nameLabel.textColor = .white
+            }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        // Можно добавить логику при завершении редактирования описания
+        //  добавить логику при завершении редактирования описания
+        if descriptionTextView.text == "Description" {
+            descriptionTextView.text = ""
+            descriptionTextView.textColor = .white
+            }
     }
     
     // Обработчик нажатия кнопки "Back"

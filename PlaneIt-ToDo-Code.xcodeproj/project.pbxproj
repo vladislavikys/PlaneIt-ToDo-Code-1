@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		F52B637D2AF664AD005B8E0E /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52B637C2AF664AD005B8E0E /* TaskModel.swift */; };
+		F55586E62B08A8D50033D786 /* CoffeeImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55586E52B08A8D50033D786 /* CoffeeImageCell.swift */; };
+		F55586E82B0B3C1B0033D786 /* CoffeeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55586E72B0B3C1B0033D786 /* CoffeeCell.swift */; };
+		F55586EA2B0B58110033D786 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55586E92B0B58110033D786 /* Constants.swift */; };
 		F57EBE2D2AF3DFE400C98231 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57EBE2C2AF3DFE400C98231 /* CustomCell.swift */; };
 		F59C5FDC2AF56E95007EF99B /* CoffeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59C5FDB2AF56E95007EF99B /* CoffeeViewController.swift */; };
 		F59C5FDE2AF56EBE007EF99B /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59C5FDD2AF56EBE007EF99B /* TaskViewController.swift */; };
@@ -41,6 +44,9 @@
 
 /* Begin PBXFileReference section */
 		F52B637C2AF664AD005B8E0E /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
+		F55586E52B08A8D50033D786 /* CoffeeImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeImageCell.swift; sourceTree = "<group>"; };
+		F55586E72B0B3C1B0033D786 /* CoffeeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeCell.swift; sourceTree = "<group>"; };
+		F55586E92B0B58110033D786 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F57EBE2C2AF3DFE400C98231 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		F59C5FDB2AF56E95007EF99B /* CoffeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeViewController.swift; sourceTree = "<group>"; };
 		F59C5FDD2AF56EBE007EF99B /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
@@ -113,7 +119,10 @@
 				F59C5FDB2AF56E95007EF99B /* CoffeeViewController.swift */,
 				F59C5FDD2AF56EBE007EF99B /* TaskViewController.swift */,
 				F57EBE2C2AF3DFE400C98231 /* CustomCell.swift */,
+				F55586E52B08A8D50033D786 /* CoffeeImageCell.swift */,
+				F55586E72B0B3C1B0033D786 /* CoffeeCell.swift */,
 				F52B637C2AF664AD005B8E0E /* TaskModel.swift */,
+				F55586E92B0B58110033D786 /* Constants.swift */,
 				F5CB63072AF27F9F004DA389 /* Main.storyboard */,
 				F5CB630A2AF27FA0004DA389 /* Assets.xcassets */,
 				F5CB630C2AF27FA0004DA389 /* LaunchScreen.storyboard */,
@@ -273,7 +282,10 @@
 				F5CB63062AF27F9F004DA389 /* ToDoListViewController.swift in Sources */,
 				F5CB63022AF27F9F004DA389 /* AppDelegate.swift in Sources */,
 				F59C5FDC2AF56E95007EF99B /* CoffeeViewController.swift in Sources */,
+				F55586E62B08A8D50033D786 /* CoffeeImageCell.swift in Sources */,
 				F57EBE2D2AF3DFE400C98231 /* CustomCell.swift in Sources */,
+				F55586EA2B0B58110033D786 /* Constants.swift in Sources */,
+				F55586E82B0B3C1B0033D786 /* CoffeeCell.swift in Sources */,
 				F5CB63042AF27F9F004DA389 /* SceneDelegate.swift in Sources */,
 				F59C5FDE2AF56EBE007EF99B /* TaskViewController.swift in Sources */,
 				F52B637D2AF664AD005B8E0E /* TaskModel.swift in Sources */,

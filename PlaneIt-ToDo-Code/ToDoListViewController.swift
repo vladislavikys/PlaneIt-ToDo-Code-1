@@ -19,7 +19,7 @@ class ToDoListViewController: UIViewController {
         setupImageView()
         setupTableView()
         setupCoffeeButton()
-        setupTaskButton()
+        setupTaskButton() 
     }
     
     // Обработчик нажатия на кнопку "Coffee"
@@ -57,7 +57,7 @@ extension ToDoListViewController: UITableViewDataSource, UITableViewDelegate {
     
     // Высота заголовка секции
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10 // Высота пространства между секциями
+        return 20 // Высота пространства между секциями
     }
     
     // Заголовок для секции
@@ -69,7 +69,7 @@ extension ToDoListViewController: UITableViewDataSource, UITableViewDelegate {
     
     // Высота футера секции
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 10 // Высота пространства между секциями
+        return 20 // Высота пространства между секциями
     }
     
     // Футер для секции

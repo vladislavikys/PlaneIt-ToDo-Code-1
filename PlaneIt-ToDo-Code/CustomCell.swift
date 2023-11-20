@@ -60,10 +60,10 @@ extension CustomCell {
     
     // Настройка кнопки отметки
     func setupCheckmark() {
-        checkmarkButton = UIButton()
+        checkmarkButton = UIButton(frame: CGRect(x: 10, y: 12, width: 24, height: 24))
+
         checkmarkButton.setImage(UIImage(named: "checkmarkImage"), for: .normal)
         checkmarkButton.setImage(UIImage(named: "checkmarkImageSelected"), for: .selected)
-        checkmarkButton = UIButton(frame: CGRect(x: 10, y: 12, width: 24, height: 24))
         checkmarkButton.contentMode = .scaleAspectFit
         // Добавление обработчика нажатия на кнопку отметки
         checkmarkButton.addTarget(self, action: #selector(checkmarkButtonTapped), for: .touchUpInside)
@@ -86,5 +86,18 @@ extension CustomCell {
         // Добавление обработчика нажатия на кнопку редактирования
         editButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
         contentView.addSubview(editButton)
+    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.text == "Name" {
+            textField.text = ""
+            textField.textColor = .white
+        }
+    }
+
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == "Description" {
+            textView.text = ""
+            textView.textColor = .white
+        }
     }
 }
