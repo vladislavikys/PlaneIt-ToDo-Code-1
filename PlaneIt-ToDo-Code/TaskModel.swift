@@ -11,8 +11,9 @@ struct Task {
     var title: String
     var description: String
     var isCompleted: Bool
-    
+    //var creationDate: Date
 }
+
 //
 //
 //// добавления новой задачи в массив

@@ -7,7 +7,7 @@ import UIKit
 
 class CoffeeCell: UICollectionViewCell {
     //это кастомная ячейка для использования в коллекции
-    static let identifier = "CoffeeViewCell"
+    static let identifier = "CoffeeCell"
     //Используется для идентификации ячейки. Вы можете использовать это значение при регистрации ячейки для использования в UICollectionView.
     let imageView: UIImageView = {
         //Это изображение внутри ячейки, которое будет отображаться.

@@ -72,7 +72,7 @@ extension CustomCell {
     
     // Настройка метки с текстом задачи
     func setupNote() {
-        noteLabel = UILabel(frame: CGRect(x: 56, y: 16, width: frame.width - 120, height: 24))
+        noteLabel = UILabel(frame: CGRect(x: 56, y: 12, width: frame.width - 120, height: 24))
         contentView.addSubview(noteLabel)
     }
     

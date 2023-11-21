@@ -20,7 +20,8 @@ class ToDoListViewController: UIViewController {
         setupImageView()
         setupTableView()
         setupCoffeeButton()
-        setupTaskButton() 
+        setupTaskButton()
+
     }
     
     // Обработчик нажатия на кнопку "Coffee"
@@ -232,8 +233,8 @@ extension ToDoListViewController {
         NSLayoutConstraint.activate([
             coffeeButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             coffeeButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
-            coffeeButton.widthAnchor.constraint(equalToConstant: 50),
-            coffeeButton.heightAnchor.constraint(equalToConstant: 50)
+            coffeeButton.widthAnchor.constraint(equalToConstant: 70),
+            coffeeButton.heightAnchor.constraint(equalToConstant: 70)
         ])
     }
 
@@ -249,9 +250,8 @@ extension ToDoListViewController {
         NSLayoutConstraint.activate([
             taskButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             taskButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0),
-            taskButton.widthAnchor.constraint(equalToConstant: 50),
-            taskButton.heightAnchor.constraint(equalToConstant: 50)
+            taskButton.widthAnchor.constraint(equalToConstant: 70),
+            taskButton.heightAnchor.constraint(equalToConstant: 70)
         ])
     }
 }
-
