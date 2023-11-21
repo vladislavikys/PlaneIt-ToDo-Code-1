@@ -9,15 +9,16 @@ class CoffeeViewController: UIViewController   {
     let coffeeCupImage = UIImageView()
     let coffeeImageView = UIImageView()
     let collectionView: UICollectionView = {
-        //Эти строки кода представляют собой создание экземпляра UICollectionView с использованием замыкания (closure) и затем его немедленную инициализацию.
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        //Здесь устанавливаются некоторые параметры макета, такие как направление прокрутки (.vertical
+
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        //Этот объект имеет начальный размер frame: .zero и использует предварительно созданный layout для управления внешним видом и расположением ячеек внутри коллекции.
+        collectionView.backgroundColor = .clear
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+
         return collectionView
     }()
-    //Это означает, что замыкание выполняется сразу после его определения, что приводит к созданию и настройке UICollectionView в момент выполнения этого кода.
     
     
     let infoButton = UIButton()
@@ -52,10 +53,10 @@ class CoffeeViewController: UIViewController   {
         
         setupCoffeeCup()
         setupImageView()
-
+        
         
         setupNavigationBar()
-       //setupCollectionView()
+        setupCollectionView()
         setupPicker()
         setupInfoButton()
         
@@ -87,14 +88,19 @@ class CoffeeViewController: UIViewController   {
             navBar.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
         // Настройка цвета и шрифта текста заголовка
-            navBar.titleTextAttributes = [
-                NSAttributedString.Key.foregroundColor: UIColor(hex: "ACF478")!,
-                NSAttributedString.Key.font: UIFont(name: "Verdana", size: 20) ?? UIFont.systemFont(ofSize: 20)
-            ]
+        navBar.titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor(hex: "ACF478")!,
+            NSAttributedString.Key.font: UIFont(name: "Verdana", size: 20) ?? UIFont.systemFont(ofSize: 20)
+        ]
         navBar.barTintColor = UIColor(hex: "28313A")
     }
     
     func setupCollectionView() {
+        // Определение констант для отступов и количества элементов в ряду
+        let leadingTrailingSpacing: CGFloat = 10
+        let numberOfItemsInRow: CGFloat = 2
+        
+        
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 10
@@ -102,7 +108,9 @@ class CoffeeViewController: UIViewController   {
         collectionView.collectionViewLayout = layout
         
         // Рассчитываем ширину ячейки так, чтобы уместить две ячейки в ряд
-        let cellWidth = (view.frame.width - 3 * 10) / 2
+        let cellWidth = (view.frame.width - (numberOfItemsInRow + 1) * leadingTrailingSpacing) / numberOfItemsInRow
+        // (numberOfItemsInRow + 1) * leadingTrailingSpacing - общая ширина отступов между ячейками (между двумя ячейками и слева и справа от коллекции).
+        // Результат делится на numberOfItemsInRow для определения ширины каждой ячейки.
         layout.itemSize = CGSize(width: cellWidth, height: cellWidth)
         
         collectionView.collectionViewLayout = layout
@@ -115,15 +123,27 @@ class CoffeeViewController: UIViewController   {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             // Констрейнты для collectionView
+            // Устанавливаем левый констрейнт для collectionView, привязывая его к левому краю основного представления (view)
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.collectionViewLeading),
+
+            // Устанавливаем правый констрейнт для collectionView, привязывая его к правому краю основного представления (view) с учетом отступа
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.collectionViewTrailing),
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 80),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -350),
+
+            // Устанавливаем верхний констрейнт для collectionView, привязывая его к верхней грани основного представления (view) с учетом отступа
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 280),
+
+            // Устанавливаем нижний констрейнт для collectionView, привязывая его к нижней грани основного представления (view) с учетом отступа
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -340),
+
+            // Устанавливаем констрейнт на ширину collectionView, фиксируя его ширину в 50 точек
             collectionView.widthAnchor.constraint(equalToConstant: 50),
+
+            // Устанавливаем констрейнт на высоту collectionView, фиксируя его высоту в 20 точек
             collectionView.heightAnchor.constraint(equalToConstant: 20)
+
         ])
     }
-
+    
     
     func setupCoffeeCup(){
         // Настраиваем изображение coffeeCupImage
@@ -153,7 +173,7 @@ class CoffeeViewController: UIViewController   {
             picker.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 50),//Размещает центр picker по горизонтали в центре основног (view), вправо
             picker.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 180),//Размещает центр picker по вертикали в центре основного  (view),  вниз
             picker.heightAnchor.constraint(equalTo: view.heightAnchor, constant: -680),//Устанавливает высоту picker так, чтобы она занимала высоту основного представления (view) за вычетом
-                                                                               //580 impiric method
+            //580 impiric method
             
             // Констрейнты для pickerView
             pickerView.widthAnchor.constraint(equalToConstant: 230),//Устанавливает ширину pickerView в 230 точек.
@@ -187,9 +207,6 @@ class CoffeeViewController: UIViewController   {
     @objc private func backButtonTapped() {
         dismiss(animated: true)
     }
-    func savingSelectedCups(){
-        
-    }
 }
 
 
@@ -205,13 +222,10 @@ extension CoffeeViewController: UIPickerViewDataSource, UIPickerViewDelegate{
         //Каждая строка будет представлять число от 0 до 10, так как pickerCount создан как массив от 0 до 10 включительно.
     }
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-            let title = "\(row)"
-            let color = UIColor(hex: "CFCFCF")!
-
-            let attributes: [NSAttributedString.Key: Any] = [
-                .foregroundColor: color,
-                
-            ]
+        let title = "\(row)"
+        let color = UIColor(hex: "CFCFCF")!
+        
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: color]
         return NSAttributedString(string: title, attributes: attributes)
     }
     
@@ -221,15 +235,16 @@ extension CoffeeViewController: UIPickerViewDataSource, UIPickerViewDelegate{
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        // Устанавливаем значение переменной selectedCount равным выбранной строке (выбранному числу чашек)
         selectedCount = row
         print(selectedCount)
-        // устанавливается равным выбранной строке, то есть значению переменной row.
+        
+        // Вызываем reloadData() для обновления данных в коллекции после изменения выбранного числа чашек
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
-        //вызывается для обновления данных в коллекции после изменения selectedCount
-        
     }
+
 }
 
 extension CoffeeViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource{
@@ -240,29 +255,31 @@ extension CoffeeViewController: UICollectionViewDelegateFlowLayout, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        //твечает за создание и настройку ячейки коллекции.
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CoffeeCell.identifier, for: indexPath) as! CoffeeCell
-        //получить ячейку для использования, используя идентификатор ячейки
-        if indexPath.row < coffeeImages.count {
-            let imageName = coffeeImages[indexPath.row]
-            cell.imageView.image = UIImage(named: imageName)
-        }
-        return cell
+        // Отвечает за создание и настройку ячейки коллекции.
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CoffeeCell.identifier, for: indexPath) as! CoffeeCell
+            
+            // Проверяем, чтобы индекс строки был меньше чем количество изображений в массиве coffeeImages
+            if indexPath.row < coffeeImages.count {
+                let imageName = coffeeImages[indexPath.row]
+                cell.updateCups(cup: UIImage(named: imageName)!)
+            }
+            return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        //позволяет настраивать размеры ячеек в коллекции
-        let width = collectionView.frame.width / 5 - 10
-        let height = collectionView.frame.height / 5 + 30
-        return CGSize(width: width, height: height)
+        
+
+        // Рассчитываем ширину ячейки так, чтобы уместить numberOfColumns ячеек в ряд
+        let cellWidth = (collectionView.frame.width - (Constants.numberOfColumns - 1) * Constants.interitemSpacing) / Constants.numberOfColumns
+
+        // Рассчитываем высоту ячейки, учитывая дополнительную высоту
+        let cellHeight = collectionView.frame.height / Constants.numberOfColumns + Constants.additionalHeight
+
+
+        return CGSize(width: cellWidth, height: cellHeight)
         //Здесь вы устанавливаете размеры ячеек. Размеры зависят от ширины и высоты коллекции.
         //Количество колонок установлено в 5, и от каждой ячейки вычитается 10 единиц ширины
         //(это для учета отступов между ячейками), а к высоте прибавляется 30 (это просто для увеличения высоты ячейки).
     }
 }
-
-
-
-
-
 
