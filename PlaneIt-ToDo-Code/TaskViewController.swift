@@ -25,6 +25,8 @@ class TaskViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         // Заполнение элементов интерфейса данными задачи при редактировании
         if isEdit, let taskToEdit = task {
             nameLabel.text = taskToEdit.title

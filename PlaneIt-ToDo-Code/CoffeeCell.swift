@@ -12,6 +12,7 @@ class CoffeeCell: UICollectionViewCell {
     let imageView: UIImageView = {
         //Это изображение внутри ячейки, которое будет отображаться.
         //Он создается с использованием замыкания и настраивается для корректного отображения.
+        //полезно, чтобы избежать создания дополнительных методов для настройки объекта, а также для обеспечения компактности кода.
         let image = UIImageView()
         
         // Установка режима масштабирования содержимого изображения.
@@ -24,12 +25,12 @@ class CoffeeCell: UICollectionViewCell {
         image.translatesAutoresizingMaskIntoConstraints = false
         
         // Возврат созданного и настроенного экземпляра UIImageView.
+        
         return image
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-
         // Добавление imageView в иерархию представлений contentView.
         contentView.addSubview(imageView)
 
@@ -47,19 +48,23 @@ class CoffeeCell: UICollectionViewCell {
             // Ограничение: нижняя граница imageView равна нижней границе contentView.
             imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
+        
     }
-
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     func updateCups(cup: UIImage){
         ///предназначен для обновления изображения в imageView ячейки.
         /////Он принимает изображение типа UIImage и устанавливает его в imageView.
         ///// Это может использоваться для обновления содержимого ячейки с новым изображением.
         imageView.image = cup
     }
+    
+    
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    // создаем UIImageView вне метода init, а внутри замыкания,
+    // для корректной инициализации объекта требуется протокол NSCoding,
+    //  реализуем required init?(coder: NSCoder) для обеспечения правильной инициализации при декодировании
 }
 
 

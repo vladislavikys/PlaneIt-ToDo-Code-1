@@ -5,7 +5,7 @@ class ToDoListViewController: UIViewController {
     
     // Массив задач
     var tasks: [Task] = [Task(title: "yes", description: "yes", isCompleted: true),
-                         Task(title: "no", description: "no", isCompleted: false),
+                         Task(title: "no", description: "no", isCompleted: true),
                          Task(title: "maybe", description: "maybe", isCompleted: false),
                          Task(title: "later", description: "later", isCompleted: false)]
     
@@ -15,8 +15,7 @@ class ToDoListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //для тестов чтоюы сразу кофк
-        
+        view.backgroundColor = UIColor(hex: "28313A")
         // Установка изображения, таблицы и кнопок
         setupImageView()
         setupTableView()
@@ -55,23 +54,6 @@ extension ToDoListViewController: UITableViewDataSource, UITableViewDelegate {
     // Количество ячеек в таблице
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tasks.count
-    }
-    
-//    // Высота заголовка секции
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 20 // Высота пространства между секциями
-//    }
-//    
-//    // Заголовок для секции
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let headerView = UIView()
-//        headerView.backgroundColor = .clear // Задаем прозрачный фон для отступа
-//        return headerView
-//    }
-    
-    // Высота футера секции
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 20 // Высота пространства между секциями
     }
     
     // Футер для секции
@@ -125,6 +107,7 @@ extension ToDoListViewController: UITableViewDataSource, UITableViewDelegate {
         taskViewController.isEdit = true
         taskViewController.editingIndexPath = indexPath
         taskViewController.delegate = self
+        taskViewController.modalPresentationStyle = .fullScreen
 
         // Открыть экран редактирования задачи
         present(taskViewController, animated: true, completion: nil)
@@ -207,13 +190,16 @@ extension ToDoListViewController {
     
     // Настройка таблицы
     func setupTableView() {
-        tableView = UITableView(frame: CGRect(x: 0, y: 200, width: view.frame.width, height: view.frame.height - 200))
+        let margin: CGFloat = 8
+
+        tableView = UITableView(frame: CGRect(x: margin, y: 200, width: view.frame.width - margin - margin, height: view.frame.height - 200))
         tableView.register(CustomCell.self, forCellReuseIdentifier: "customCell")
         tableView.backgroundColor = UIColor(hex: "28313A")
         tableView.dataSource = self
         tableView.delegate = self
         view.addSubview(tableView)
     }
+
     
     // Настройка кнопки "Coffee"
     func setupCoffeeButton() {
@@ -231,7 +217,7 @@ extension ToDoListViewController {
             coffeeButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
-    
+
     // Настройка кнопки "Add Task"
     func setupTaskButton() {
         let taskButton = UIButton()

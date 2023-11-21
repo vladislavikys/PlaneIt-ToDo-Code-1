@@ -79,7 +79,7 @@ extension CustomCell {
     // Настройка кнопки редактирования
     func setupEdit() {
         editButton = UIButton(type: .system)
-        editButton.frame = CGRect(x: frame.width + 12 , y: 10, width: 29, height: 29)
+        editButton.frame = CGRect(x: frame.width  , y: 10, width: 29, height: 29)
         editButton.setImage(UIImage(named: "edit"), for: .normal)
         editButton.imageView?.contentMode = .scaleAspectFit
         editButton.imageView?.tintColor = UIColor(hex: "99C779")
