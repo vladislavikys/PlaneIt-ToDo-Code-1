@@ -96,6 +96,25 @@ extension ToDoListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         return nil
     }
+    // Добавление функционала удаления задачи по свайпу
+        func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+            let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (_, _, completionHandler) in
+                self?.deleteTask(at: indexPath)
+                completionHandler(true)
+            }
+
+            deleteAction.backgroundColor = UIColor(hex: "F66156")
+            deleteAction.image = UIImage(systemName: "trash.fill")
+
+            let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+            return configuration
+        }
+
+        // Обработка удаления задачи
+        func deleteTask(at indexPath: IndexPath) {
+            tasks.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
     
     // Обработчик нажатия на кнопку "Edit"
     @objc func editButtonTapped(at indexPath: IndexPath) {
