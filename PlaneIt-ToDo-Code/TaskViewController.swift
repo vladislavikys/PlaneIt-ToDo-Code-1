@@ -14,6 +14,8 @@ class TaskViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
     let descriptionTextView = UITextView()
     let navBar = UINavigationBar()
     var saveButton: UIBarButtonItem!
+
+    
     
     // Данные задачи
     var task: Task?
@@ -27,6 +29,7 @@ class TaskViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         nameLabel.delegate = self
+        
         // Заполнение элементов интерфейса данными задачи при редактировании
         if isEdit, let taskToEdit = task {
             nameLabel.text = taskToEdit.title
@@ -66,16 +69,16 @@ class TaskViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
             textField.becomeFirstResponder()
         }
     }
-//    func textViewDidChange(_ textView: UITextView) {
-//        if textView == descriptionTextView {
-//            textView.text = ""
-//            textView.becomeFirstResponder()
-//        }
-//    }
+    //    func textViewDidChange(_ textView: UITextView) {
+    //        if textView == descriptionTextView {
+    //            textView.text = ""
+    //            textView.becomeFirstResponder()
+    //        }
+    //    }
     // Метод делегата для скрытия клавиатуры при нажатии на клавишу "Return"
-        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            textField.resignFirstResponder() // Скрываем клавиатуру
-            return true
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder() // Скрываем клавиатуру
+        return true
     }
     // Метод для обновления состояния кнопки "Save"
     private func updateSaveButtonState() {
@@ -101,17 +104,19 @@ class TaskViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
             return
         }
         
+        let currentDate = Date()
+        
         if isEdit, let editingIndexPath = editingIndexPath {
             // Если редактируем существующую задачу
-            let updatedTask = Task(title: textName, description: textDescription, isCompleted: task?.isCompleted ?? false)
-            // Обновляем задачу
+            let updatedTask = Task(title: textName, description: textDescription, isCompleted: task?.isCompleted ?? false, creationDate: currentDate)
             task?.title = textName
             task?.description = textDescription
+            task?.creationDate = currentDate // Обновляем дату создания задачи
             // Вызываем метод делегата, чтобы обновить задачу в массиве и таблице
             delegate?.completedEditTask(task: updatedTask, at: editingIndexPath)
         } else {
             // Создаем новую задачу
-            let newTask = Task(title: textName, description: textDescription, isCompleted: false)
+            let newTask = Task(title: textName, description: textDescription, isCompleted: task?.isCompleted ?? false, creationDate: currentDate)
             // Вызываем метод делегата, чтобы добавить новую задачу в массив и таблицу
             delegate?.completedCreateTask(task: newTask)
         }

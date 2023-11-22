@@ -4,9 +4,10 @@ import UIKit
 class ToDoListViewController: UIViewController {
     
     // Массив задач
-    var tasks: [Task] = [Task(title: "yes", description: "yes", isCompleted: true),
-                             Task(title: "no", description: "no", isCompleted: false)]
-    
+//    var tasks: [Task] = [Task(title: "yes", description: "yes", isCompleted: true),
+//                             Task(title: "no", description: "no", isCompleted: false)]
+
+    var tasks: [Task] = []
     
     // Элементы интерфейса
     var imageView: UIImageView!
@@ -144,7 +145,10 @@ extension ToDoListViewController: TaskViewControllerDelegate, CustomCellDelegate
     // Обработка завершения редактирования задачи
     func completedEditTask(task: Task, at indexPath: IndexPath) {
         // Обновляем задачу в массиве задач
-        tasks[indexPath.row] = task
+        var updatedTask = task
+        updatedTask.creationDate = Date()
+        tasks[indexPath.row] = updatedTask
+        
         // Обновляем соответствующую строку в tableView
         tableView.reloadRows(at: [indexPath], with: .automatic)
         saveTasks()
@@ -154,7 +158,10 @@ extension ToDoListViewController: TaskViewControllerDelegate, CustomCellDelegate
     
     // Обработка завершения создания задачи
     func completedCreateTask(task: Task) {
-        tasks.append(task)
+        var updatedTask = task
+        updatedTask.creationDate = Date() // Присваиваем текущую дату при создании задачи
+        tasks.append(updatedTask)
+        
         // Вставляем новую строку в tableView
         let indexPath = IndexPath(row: tasks.count - 1, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
