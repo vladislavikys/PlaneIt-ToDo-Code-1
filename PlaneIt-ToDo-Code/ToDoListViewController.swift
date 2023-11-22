@@ -5,9 +5,8 @@ class ToDoListViewController: UIViewController {
     
     // Массив задач
     var tasks: [Task] = [Task(title: "yes", description: "yes", isCompleted: true),
-                         Task(title: "no", description: "no", isCompleted: true),
-                         Task(title: "maybe", description: "maybe", isCompleted: false),
-                         Task(title: "later", description: "later", isCompleted: false)]
+                             Task(title: "no", description: "no", isCompleted: false)]
+    
     
     // Элементы интерфейса
     var imageView: UIImageView!
@@ -22,6 +21,8 @@ class ToDoListViewController: UIViewController {
         setupCoffeeButton()
         setupTaskButton()
 
+        //readJSON()
+        readData()
     }
     
     // Обработчик нажатия на кнопку "Coffee"
@@ -115,6 +116,9 @@ extension ToDoListViewController: UITableViewDataSource, UITableViewDelegate {
         func deleteTask(at indexPath: IndexPath) {
             tasks.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            saveTasks()
+            readJSON()
+            print("-------------------------------------")
         }
     
     // Обработчик нажатия на кнопку "Edit"
@@ -143,6 +147,9 @@ extension ToDoListViewController: TaskViewControllerDelegate, CustomCellDelegate
         tasks[indexPath.row] = task
         // Обновляем соответствующую строку в tableView
         tableView.reloadRows(at: [indexPath], with: .automatic)
+        saveTasks()
+        print("completedEditTask---------------------")
+        readJSON()
     }
     
     // Обработка завершения создания задачи
@@ -151,6 +158,9 @@ extension ToDoListViewController: TaskViewControllerDelegate, CustomCellDelegate
         // Вставляем новую строку в tableView
         let indexPath = IndexPath(row: tasks.count - 1, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
+        saveTasks()
+        print("completedCreateTask---------------------")
+        readJSON()
     }
     
     // Обработка нажатия на кнопку "Checkmark" в ячейке
@@ -159,6 +169,9 @@ extension ToDoListViewController: TaskViewControllerDelegate, CustomCellDelegate
         tasks[indexPath.row].isCompleted.toggle()
         // Обновляем соответствующую строку в tableView
         tableView.reloadRows(at: [indexPath], with: .automatic)
+        saveTasks()
+        print("checkmarkTapped---------------------")
+        readJSON()
     }
 }
 
@@ -198,6 +211,16 @@ extension ToDoListViewController {
         // Показываем TaskViewController
         present(taskViewController, animated: true, completion: nil)
     }
+    // Сохранение задач в UserDefaults
+        func saveTasks() {
+            do {
+                let encoder = JSONEncoder()
+                let data = try encoder.encode(tasks)
+                UserDefaults.standard.set(data, forKey: "tasks")
+            } catch {
+                print("Ошибка при кодировании задач: \(error.localizedDescription)")
+            }
+        }
     
     // Установка изображения в верхней части экрана
     func setupImageView() {
@@ -253,5 +276,23 @@ extension ToDoListViewController {
             taskButton.widthAnchor.constraint(equalToConstant: 70),
             taskButton.heightAnchor.constraint(equalToConstant: 70)
         ])
+    }
+}
+
+extension ToDoListViewController{
+    func readJSON(){
+        if let tasksData = UserDefaults.standard.data(forKey: "tasks"),
+           let tasksArray = try? JSONSerialization.jsonObject(with: tasksData, options: []) as? [[String: Any]] {
+            print("Tasks from UserDefaults: \(tasksArray)")
+        } else {
+            print("No tasks found in UserDefaults.")
+        }
+    }
+    func readData(){
+        if let savedTasksData = UserDefaults.standard.data(forKey: "tasks"),
+           let savedTasks = try? JSONDecoder().decode([Task].self, from: savedTasksData) {
+            tasks = savedTasks
+        }
+        tableView.reloadData()
     }
 }
