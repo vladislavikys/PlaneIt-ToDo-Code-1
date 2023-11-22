@@ -13,15 +13,22 @@ class ToDoListViewController: UIViewController {
     var imageView: UIImageView!
     var tableView: UITableView!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: "28313A")
+        
+
         // Установка изображения, таблицы и кнопок
         setupImageView()
         setupTableView()
         setupCoffeeButton()
         setupTaskButton()
 
+//        tableView.dragInteractionEnabled = true
+//        tableView.dragDelegate = self
+//        tableView.dropDelegate = self
+        
         //readJSON()
         readData()
     }
@@ -59,19 +66,11 @@ extension ToDoListViewController: UITableViewDataSource, UITableViewDelegate {
         return tasks.count
     }
     
-    // Футер для секции
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footerView = UIView()
-        footerView.backgroundColor = .clear // Прозрачный фон для отступа
-        return footerView
-    }
-    
     // Отображение ячейки
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! CustomCell
         cell.delegate = self
         cell.indexPath = indexPath
-        
         
         // Заполнение данных ячейки
         cell.noteLabel.text = tasks[indexPath.row].title
@@ -110,7 +109,6 @@ extension ToDoListViewController: UITableViewDataSource, UITableViewDelegate {
             self?.deleteTask(withID: taskID)
             completionHandler(true)
         }
-
         deleteAction.backgroundColor = UIColor(hex: "F66156")
         deleteAction.image = UIImage(systemName: "trash.fill")
 
@@ -123,6 +121,7 @@ extension ToDoListViewController: UITableViewDataSource, UITableViewDelegate {
         if let index = tasks.firstIndex(where: { $0.id == id }) {
             tasks.remove(at: index)
             tableView.reloadData()  // Перезагрузка всей таблицы после удаления
+            print("-------------------------------------")
             saveTasks()
             readJSON()
             print("-------------------------------------")
@@ -143,6 +142,10 @@ extension ToDoListViewController: UITableViewDataSource, UITableViewDelegate {
 
         // Открыть экран редактирования задачи
         present(taskViewController, animated: true, completion: nil)
+        print("@objc func editButtonTapped-------------------------------------")
+        saveTasks()
+        readJSON()
+        print("@objc func editButtonTapped-------------------------------------")
     }
 }
 
@@ -158,14 +161,12 @@ extension ToDoListViewController: TaskViewControllerDelegate, CustomCellDelegate
 
             // Обновляем соответствующую строку в tableView
             tableView.reloadRows(at: [indexPath], with: .automatic)
-
+            print("func completedEditTask---------------------")
             // Сохраняем обновленные задачи
             saveTasks()
-
-            print("completedEditTask---------------------")
-
             // Читаем и выводим задачи из хранилища (например, UserDefaults)
             readJSON()
+            print("func completedEditTask---------------------")
         } else {
             // Если задача с указанным id не найдена, возможно, выполнить какое-то дополнительное действие или выводить сообщение об ошибке
             print("Task with id \(task.id) not found.")
@@ -184,10 +185,10 @@ extension ToDoListViewController: TaskViewControllerDelegate, CustomCellDelegate
         // Вставляем новую строку в tableView
         let indexPath = IndexPath(row: tasks.count - 1, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
-        
-        saveTasks()
         print("completedCreateTask---------------------")
+        saveTasks()
         readJSON()
+        print("completedCreateTask---------------------")
     }
 
     
@@ -198,13 +199,12 @@ extension ToDoListViewController: TaskViewControllerDelegate, CustomCellDelegate
         // Обновляем соответствующую строку в tableView
         tableView.reloadRows(at: [indexPath], with: .automatic)
         
+        print("checkmarkTapped---------------------")
         // Сохраняем обновленные задачи
         saveTasks()
-        
-        print("checkmarkTapped---------------------")
-        
         // Читаем и выводим задачи из хранилища (например, UserDefaults)
         readJSON()
+        print("checkmarkTapped---------------------")
     }
 }
 
@@ -267,7 +267,6 @@ extension ToDoListViewController {
     // Настройка таблицы
     func setupTableView() {
         let margin: CGFloat = 8
-
         tableView = UITableView(frame: CGRect(x: margin, y: 200, width: view.frame.width - margin - margin, height: view.frame.height - 200))
         tableView.register(CustomCell.self, forCellReuseIdentifier: "customCell")
         tableView.backgroundColor = UIColor(hex: "28313A")
@@ -276,7 +275,6 @@ extension ToDoListViewController {
         view.addSubview(tableView)
     }
 
-    
     // Настройка кнопки "Coffee"
     func setupCoffeeButton() {
         let coffeeButton = UIButton()
@@ -292,8 +290,9 @@ extension ToDoListViewController {
             coffeeButton.widthAnchor.constraint(equalToConstant: 70),
             coffeeButton.heightAnchor.constraint(equalToConstant: 70)
         ])
+        
     }
-
+    
     // Настройка кнопки "Add Task"
     func setupTaskButton() {
         let taskButton = UIButton()
@@ -313,19 +312,102 @@ extension ToDoListViewController {
 }
 
 extension ToDoListViewController{
-    func readJSON(){
-        if let tasksData = UserDefaults.standard.data(forKey: "tasks"),
-           let tasksArray = try? JSONSerialization.jsonObject(with: tasksData, options: []) as? [[String: Any]] {
-            print("Tasks from UserDefaults: \(tasksArray)")
+    func readJSON() {
+        if let tasksData = UserDefaults.standard.data(forKey: "tasks") {
+            do {
+                let tasksArray = try JSONDecoder().decode([Task].self, from: tasksData)
+                print("Tasks from UserDefaults: \(tasksArray)")
+            } catch {
+                print("Error decoding tasks: \(error.localizedDescription)")
+            }
         } else {
             print("No tasks found in UserDefaults.")
         }
     }
-    func readData(){
-        if let savedTasksData = UserDefaults.standard.data(forKey: "tasks"),
-           let savedTasks = try? JSONDecoder().decode([Task].self, from: savedTasksData) {
-            tasks = savedTasks
+
+    func readData() {
+        if let savedTasksData = UserDefaults.standard.data(forKey: "tasks") {
+            do {
+                let savedTasks = try JSONDecoder().decode([Task].self, from: savedTasksData)
+                tasks = savedTasks
+            } catch {
+                print("Error decoding saved tasks: \(error.localizedDescription)")
+            }
         }
         tableView.reloadData()
     }
+
 }
+
+/*
+extension ToDoListViewController : UITableViewDragDelegate, UITableViewDropDelegate {
+    // Реализация методов для поддержки перемещения ячеек
+
+    // Метод делегата для поддержки начала перемещения ячейки
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        let task = tasks[indexPath.row]
+
+        // Создаем провайдер элемента для перемещаемой задачи
+        let itemProvider = NSItemProvider(object: task.id as NSString)
+
+        // Создаем объект UIDragItem с использованием провайдера
+        let dragItem = UIDragItem(itemProvider: itemProvider)
+
+        // Возвращаем массив с единственным UIDragItem
+        return [dragItem]
+    }
+    // Метод для обновления идентификатора задачи при перемещении
+        func updateTaskId(at indexPath: IndexPath, withNewId newId: String) {
+            tasks[indexPath.row].id = newId
+            saveTasks()
+            readJSON()
+        }
+
+
+ // Метод делегата для поддержки перемещения ячейки внутри той же таблицы
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        // Удаляем задачу из исходной позиции
+        let movedTask = tasks.remove(at: sourceIndexPath.row)
+        
+        // Вставляем задачу на новую позицию
+        tasks.insert(movedTask, at: destinationIndexPath.row)
+        
+        // Сохраняем изменения и обновляем отображение
+        saveTasks()
+        readJSON()
+    }
+
+
+ // Метод делегата для определения, может ли быть принята перемещаемая ячейка
+ func tableView(_ tableView: UITableView, canHandle session: UIDropSession) -> Bool {
+     // Возвращаем true только для локальных сессий перемещения (внутри той же таблицы)
+     return session.localDragSession != nil
+ }
+
+ // Метод делегата для обработки завершения перемещения ячейки
+ func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
+     // Проверяем, что у нас есть пункт назначения (куда была перемещена ячейка)
+     guard let destinationIndexPath = coordinator.destinationIndexPath else { return }
+
+     // Обработка завершения перемещения ячейки
+     coordinator.session.loadObjects(ofClass: NSString.self) { items in
+         // Проверяем, что мы получили массив строк и первый элемент не nil
+         guard let ids = items as? [String], let id = ids.first else { return }
+
+         // Ищем индекс перемещаемой задачи в массиве
+         if let movedTaskIndex = self.tasks.firstIndex(where: { $0.id == id }) {
+             // Удаляем задачу из старой позиции и вставляем ее на новую позицию
+             let movedTask = self.tasks.remove(at: movedTaskIndex)
+             self.tasks.insert(movedTask, at: destinationIndexPath.row)
+
+             // Обновляем отображение и сохраняем изменения
+             self.tableView.insertRows(at: [destinationIndexPath], with: .automatic)
+             self.saveTasks()
+             self.readJSON()
+         }
+     }
+ }
+
+}
+ 
+*/
