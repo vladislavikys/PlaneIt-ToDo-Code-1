@@ -8,24 +8,21 @@
 import Foundation
 
 struct Task:Codable{
+    var id: String
     var title: String
     var description: String
     var isCompleted: Bool
     var creationDate: Date // поможет уникально идентифицировать каждую задачу и предотвратить путаницу при их удалении.
     
     // Инициализатор для удобства создания задачи
-    init(title: String, description: String, isCompleted: Bool, creationDate: Date) {
+    init(id: String,title: String, description: String, isCompleted: Bool, creationDate: Date) {
+        self.id = id
         self.title = title
         self.description = description
         self.isCompleted = isCompleted
         self.creationDate = Date() // Присваиваем текущую дату при создании задачи
     }
-    // Вычисляемое свойство для форматированной даты
-        var formattedCreationDate: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
-        return dateFormatter.string(from: creationDate)
-    }
+
 }
 
 //

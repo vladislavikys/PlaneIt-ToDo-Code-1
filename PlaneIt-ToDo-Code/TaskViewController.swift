@@ -98,32 +98,32 @@ class TaskViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
     }
     // Обработчик нажатия кнопки "Save"
     @objc private func saveButtonTapped() {
-        guard let textName = nameLabel.text, let textDescription = descriptionTextView.text else {
+        guard let textName = nameLabel.text, !textName.isEmpty,
+              let textDescription = descriptionTextView.text else {
             // Обработка случая, когда заголовок задачи не введен
             // Можете добавить здесь соответствующее предупреждение для пользователя
             return
         }
-        
+
         let currentDate = Date()
-        
+
         if isEdit, let editingIndexPath = editingIndexPath {
             // Если редактируем существующую задачу
-            let updatedTask = Task(title: textName, description: textDescription, isCompleted: task?.isCompleted ?? false, creationDate: currentDate)
-            task?.title = textName
-            task?.description = textDescription
-            task?.creationDate = currentDate // Обновляем дату создания задачи
+            let updatedTask = Task(id: task?.id ?? UUID().uuidString, title: textName, description: textDescription, isCompleted: task?.isCompleted ?? false, creationDate: currentDate)
             // Вызываем метод делегата, чтобы обновить задачу в массиве и таблице
             delegate?.completedEditTask(task: updatedTask, at: editingIndexPath)
         } else {
             // Создаем новую задачу
-            let newTask = Task(title: textName, description: textDescription, isCompleted: task?.isCompleted ?? false, creationDate: currentDate)
+            let newTask = Task(id: UUID().uuidString, title: textName, description: textDescription, isCompleted: task?.isCompleted ?? false, creationDate: currentDate)
+
             // Вызываем метод делегата, чтобы добавить новую задачу в массив и таблицу
             delegate?.completedCreateTask(task: newTask)
         }
-        
+
         // Закрываем TaskViewController после сохранения
         dismiss(animated: true, completion: nil)
     }
+
 }
 
 // Расширение для настройки интерфейса

@@ -72,6 +72,7 @@ extension ToDoListViewController: UITableViewDataSource, UITableViewDelegate {
         cell.delegate = self
         cell.indexPath = indexPath
         
+        
         // Заполнение данных ячейки
         cell.noteLabel.text = tasks[indexPath.row].title
         cell.checkmarkButton.setImage(UIImage(named: "checkmarkImage"), for: .normal)
@@ -100,27 +101,33 @@ extension ToDoListViewController: UITableViewDataSource, UITableViewDelegate {
         return nil
     }
     // Добавление функционала удаления задачи по свайпу
-        func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-            let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (_, _, completionHandler) in
-                self?.deleteTask(at: indexPath)
-                completionHandler(true)
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (_, _, completionHandler) in
+            guard let taskID = self?.tasks[indexPath.row].id else {
+                completionHandler(false)
+                return
             }
-
-            deleteAction.backgroundColor = UIColor(hex: "F66156")
-            deleteAction.image = UIImage(systemName: "trash.fill")
-
-            let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
-            return configuration
+            self?.deleteTask(withID: taskID)
+            completionHandler(true)
         }
 
+        deleteAction.backgroundColor = UIColor(hex: "F66156")
+        deleteAction.image = UIImage(systemName: "trash.fill")
+
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        return configuration
+    }
+
         // Обработка удаления задачи
-        func deleteTask(at indexPath: IndexPath) {
-            tasks.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+    func deleteTask(withID id: String) {
+        if let index = tasks.firstIndex(where: { $0.id == id }) {
+            tasks.remove(at: index)
+            tableView.reloadData()  // Перезагрузка всей таблицы после удаления
             saveTasks()
             readJSON()
             print("-------------------------------------")
         }
+    }
     
     // Обработчик нажатия на кнопку "Edit"
     @objc func editButtonTapped(at indexPath: IndexPath) {
@@ -144,40 +151,59 @@ extension ToDoListViewController: TaskViewControllerDelegate, CustomCellDelegate
     
     // Обработка завершения редактирования задачи
     func completedEditTask(task: Task, at indexPath: IndexPath) {
-        // Обновляем задачу в массиве задач
-        var updatedTask = task
-        updatedTask.creationDate = Date()
-        tasks[indexPath.row] = updatedTask
-        
-        // Обновляем соответствующую строку в tableView
-        tableView.reloadRows(at: [indexPath], with: .automatic)
-        saveTasks()
-        print("completedEditTask---------------------")
-        readJSON()
+        // Поиск индекса задачи с таким же id в массиве
+        if let index = tasks.firstIndex(where: { $0.id == task.id }) {
+            // Обновляем задачу в массиве задач
+            tasks[index] = task
+
+            // Обновляем соответствующую строку в tableView
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+
+            // Сохраняем обновленные задачи
+            saveTasks()
+
+            print("completedEditTask---------------------")
+
+            // Читаем и выводим задачи из хранилища (например, UserDefaults)
+            readJSON()
+        } else {
+            // Если задача с указанным id не найдена, возможно, выполнить какое-то дополнительное действие или выводить сообщение об ошибке
+            print("Task with id \(task.id) not found.")
+        }
     }
+
     
     // Обработка завершения создания задачи
     func completedCreateTask(task: Task) {
         var updatedTask = task
         updatedTask.creationDate = Date() // Присваиваем текущую дату при создании задачи
+        updatedTask.id = UUID().uuidString // Генерируем уникальный идентификатор для задачи
+        
         tasks.append(updatedTask)
         
         // Вставляем новую строку в tableView
         let indexPath = IndexPath(row: tasks.count - 1, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
+        
         saveTasks()
         print("completedCreateTask---------------------")
         readJSON()
     }
+
     
-    // Обработка нажатия на кнопку "Checkmark" в ячейке
     func checkmarkTapped(at indexPath: IndexPath) {
         // Инвертируем состояние isCompleted для выбранной задачи
         tasks[indexPath.row].isCompleted.toggle()
+        
         // Обновляем соответствующую строку в tableView
         tableView.reloadRows(at: [indexPath], with: .automatic)
+        
+        // Сохраняем обновленные задачи
         saveTasks()
+        
         print("checkmarkTapped---------------------")
+        
+        // Читаем и выводим задачи из хранилища (например, UserDefaults)
         readJSON()
     }
 }
