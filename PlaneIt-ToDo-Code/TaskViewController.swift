@@ -15,11 +15,8 @@ class TaskViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
     let navBar = UINavigationBar()
     var saveButton: UIBarButtonItem!
 
-    
-    
     // Данные задачи
     var task: Task?
-    
     var isEdit: Bool = false
     var editingIndexPath: IndexPath?
     
@@ -45,11 +42,9 @@ class TaskViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         view.addGestureRecognizer(tapGesture)
         
-        
-        navBar.backgroundColor = UIColor(hex: "28313A")
-        view.backgroundColor = UIColor(hex: "333E49")
-        
-        
+        navBar.backgroundColor = UIColor(named: "28313A")
+        view.backgroundColor = UIColor(named: "333E49")
+
     }
     // Обработчик изменения текста в поле ввода
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -69,12 +64,14 @@ class TaskViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
             textField.becomeFirstResponder()
         }
     }
+    //баг
     //    func textViewDidChange(_ textView: UITextView) {
     //        if textView == descriptionTextView {
     //            textView.text = ""
     //            textView.becomeFirstResponder()
     //        }
     //    }
+    
     // Метод делегата для скрытия клавиатуры при нажатии на клавишу "Return"
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder() // Скрываем клавиатуру
@@ -84,7 +81,7 @@ class TaskViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
     private func updateSaveButtonState() {
         let nameFilled = !(nameLabel.text?.isEmpty ?? true)
         // Устанавливаем состояние кнопки "Save" в зависимости от заполненности поля nameLabel
-        //если tf не меняли быдет false
+        //если label не меняли быдет false
         saveButton.isEnabled = nameFilled
     }
     
@@ -101,7 +98,8 @@ class TaskViewController: UIViewController, UITextViewDelegate, UITextFieldDeleg
         guard let textName = nameLabel.text, !textName.isEmpty,
               let textDescription = descriptionTextView.text else {
             // Обработка случая, когда заголовок задачи не введен
-            // Можете добавить здесь соответствующее предупреждение для пользователя
+            // Можете добавить  предупреждение для пользователя но нам не нужно
+            //если данных нет кнопка SAVE  не доступна к сохранения 
             return
         }
 
@@ -133,19 +131,23 @@ extension TaskViewController {
         let navItem = UINavigationItem(title: "")
         view.addSubview(navBar)
         navBar.translatesAutoresizingMaskIntoConstraints = false
+        // отключает автоматическую конвертацию констрейнтов в AutoresizingMask при использовании Auto Layout. Мы хотим управлять констрейнтами вручную.
         navBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        //устанавливает верхнюю границу навигационной панели находящейся ниже границы безопасной области верхнего края родительского представления.
         navBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        //устанавливает левую границу навигационной панели находящейся в начале (левом краю) родительского представления.
         navBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        navBar.tintColor = UIColor(hex: "28313A")
-        navBar.barTintColor = UIColor(hex: "28313A")
+        //устанавливает правую границу навигационной панели находящейся в конце (правом краю) родительского представления.
+        navBar.tintColor = UIColor(named: "28313A")
+        navBar.barTintColor = UIColor(named: "28313A")
         
         // Кнопки навигационной панели
         let backButton = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(backButtonTapped))
-        backButton.tintColor = UIColor(hex: "ACF478")
+        backButton.tintColor = UIColor(named: "ACF478")
         
         // Создаем кнопку "Save"
         saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveButtonTapped))
-        saveButton.tintColor = UIColor(hex: "ACF478")
+        saveButton.tintColor = UIColor(named: "ACF478")
         
         navItem.leftBarButtonItem = backButton
         navItem.rightBarButtonItem = saveButton
@@ -155,26 +157,36 @@ extension TaskViewController {
         updateSaveButtonState()
     }
     
+    // Настройка текстового поля для ввода названия задачи
     func setupNameLabel() {
+        // Установка делегата для обработки событий текстового поля
         nameLabel.delegate = self
+        
+        // Условие: если мы  находимся в режиме создания, устанавливаем текст по умолчанию
         if isEdit == false {
             nameLabel.text = "Name..."
         }
+        
+        // Настройка внешнего вида текстового поля
         nameLabel.textColor = .gray
-        nameLabel.backgroundColor = UIColor(hex: "333E49")
+        nameLabel.backgroundColor = UIColor(named: "333E49")
         nameLabel.clipsToBounds = true
         nameLabel.autocapitalizationType = .words
         nameLabel.layer.masksToBounds = true
+        
+        // Добавление текстового поля на экран
         view.addSubview(nameLabel)
         
+        // Настройка Auto Layout для текстового поля
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            nameLabel.topAnchor.constraint(equalTo: navBar.bottomAnchor, constant: 10),
-            nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
-            nameLabel.heightAnchor.constraint(equalToConstant: 40)
+            nameLabel.topAnchor.constraint(equalTo: navBar.bottomAnchor, constant: 10), // Отступ от навигационной панели
+            nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20), // Отступ слева
+            nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15), // Отступ справа
+            nameLabel.heightAnchor.constraint(equalToConstant: 40) // Высота текстового поля
         ])
     }
+
     
     func setupDescriptionTextView() {
         descriptionTextView.delegate = self
@@ -184,7 +196,7 @@ extension TaskViewController {
         descriptionTextView.font = .systemFont(ofSize: 20)
         descriptionTextView.autocapitalizationType = .words
         descriptionTextView.textColor = .white
-        descriptionTextView.backgroundColor = UIColor(hex: "5B5B5B")
+        descriptionTextView.backgroundColor = UIColor(named: "5B5B5B")
         descriptionTextView.autocapitalizationType = .words
         descriptionTextView.layer.cornerRadius = 20
         descriptionTextView.layer.masksToBounds = true

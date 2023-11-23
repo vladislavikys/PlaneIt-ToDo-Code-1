@@ -12,7 +12,7 @@ struct Task:Codable{
     var title: String
     var description: String
     var isCompleted: Bool
-    var creationDate: Date // поможет уникально идентифицировать каждую задачу и предотвратить путаницу при их удалении.
+    var creationDate: Date 
     
     // Инициализатор для удобства создания задачи
     init(id: String,title: String, description: String, isCompleted: Bool, creationDate: Date) {

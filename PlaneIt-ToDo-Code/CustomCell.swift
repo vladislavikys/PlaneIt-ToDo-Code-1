@@ -82,7 +82,7 @@ extension CustomCell {
         editButton.frame = CGRect(x: frame.width  , y: 10, width: 29, height: 29)
         editButton.setImage(UIImage(named: "edit"), for: .normal)
         editButton.imageView?.contentMode = .scaleAspectFit
-        editButton.imageView?.tintColor = UIColor(hex: "99C779")
+        editButton.imageView?.tintColor = UIColor(named: "99C779")
         // Добавление обработчика нажатия на кнопку редактирования
         editButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
         contentView.addSubview(editButton)

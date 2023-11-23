@@ -2,41 +2,46 @@ import UIKit
 
 class CoffeeViewController: UIViewController   {
     
-    var coffeeTitle = UILabel()
-    var coffeeTitleView = UIView()
-    var imageView: UIImageView!
-    let navBar = UINavigationBar()
-    let coffeeCupImage = UIImageView()
-    let coffeeImageView = UIImageView()
+    // Элементы интерфейса
+    var coffeeTitle = UILabel() // Заголовок экрана с контролем кофе
+    var coffeeTitleView = UIView() // Вид для отображения заголовка
+    var imageView: UIImageView! // Изображение в верхней части экрана
+    let navBar = UINavigationBar() // Навигационная панель
+    let coffeeCupImage = UIImageView() // Изображение чашки кофе
+    let coffeeImageView = UIImageView() // Изображение кофе фона
+    
+    // Создание UICollectionView с  замыкания для его конфигурации
     let collectionView: UICollectionView = {
+        // Создание объекта для настройки внешнего вида ячеек
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
+        layout.scrollDirection = .vertical // Установка направления прокрутки - вертикальное
 
+        // Инициализация  с использованием созданного layout и начального frame  .zero
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .clear
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.showsHorizontalScrollIndicator = false
+        
+        // Настройка внешнего вида коллекции
+        collectionView.backgroundColor = .clear // Прозрачный фон коллекции
+        collectionView.showsVerticalScrollIndicator = false // Скрытие вертикального индикатора прокрутки
+        collectionView.showsHorizontalScrollIndicator = false // Скрытие горизонтального индикатора прокрутки
 
-        return collectionView
+        return collectionView // Возвращение настроенного объекта UICollectionView
     }()
-    
-    
+
+
     let infoButton = UIButton()
     let circleInfo = UIImageView()
     
     let pickerView = UIView()
     let picker = UIPickerView()
     
-    // Добавленные переменные
-    let coffeeImages: [String] = ["coffee-cup-1", "coffee-cup-2", "coffee-cup-3", "coffee-cup-4", "coffee-cup-5",
-                                  "coffee-cup-6", "coffee-cup-7", "coffee-cup-8", "coffee-cup-9", "coffee-cup-10"]
     var selectedCount = 0
     let pickerCount: [Int] = Array(stride(from: 0, through: 10, by: 1))
-    //создать последовательность чисел от 0 до 10 с шагом 1, и затем преобразует эту последовательность в массив типа [Int].
+    //создать последовательность чисел от 0 до 10 с шагом 1
+    //затем преобразует эту последовательность в массив типа [Int].
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(hex: "333E49")
+        view.backgroundColor = UIColor(named: "333E49")
         
         picker.dataSource = self
         //Устанавливает dataSource (источник данных) для UIPickerView в текущий контроллер.
@@ -54,11 +59,13 @@ class CoffeeViewController: UIViewController   {
         setupCoffeeCup()
         setupImageView()
         
-        
         setupNavigationBar()
         setupCollectionView()
         setupPicker()
         setupInfoButton()
+        
+        loadSelectedCount()
+        loadSelectedPickerRow()
         
     }
     
@@ -74,7 +81,7 @@ class CoffeeViewController: UIViewController   {
         
         // Добавляем кнопку "Back"
         let backButton = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(backButtonTapped))
-        backButton.tintColor = UIColor(hex: "ACF478")
+        backButton.tintColor = UIColor(named: "ACF478")
         navItem.leftBarButtonItem = backButton
         
         navBar.setItems([navItem], animated: false)
@@ -89,10 +96,10 @@ class CoffeeViewController: UIViewController   {
         ])
         // Настройка цвета и шрифта текста заголовка
         navBar.titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor(hex: "ACF478")!,
+            NSAttributedString.Key.foregroundColor: UIColor(named: "ACF478")!,
             NSAttributedString.Key.font: UIFont(name: "Verdana", size: 20) ?? UIFont.systemFont(ofSize: 20)
         ]
-        navBar.barTintColor = UIColor(hex: "28313A")
+        navBar.barTintColor = UIColor(named: "28313A")
     }
     
     func setupCollectionView() {
@@ -113,10 +120,11 @@ class CoffeeViewController: UIViewController   {
         // Результат делится на numberOfItemsInRow для определения ширины каждой ячейки.
         layout.itemSize = CGSize(width: cellWidth, height: cellWidth)
         
-        collectionView.collectionViewLayout = layout
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(CoffeeImageCell.self, forCellWithReuseIdentifier: "CoffeeImageCell")
+        collectionView.collectionViewLayout = layout // Установка настроенного layout для коллекции
+        collectionView.delegate = self // Установка делегата коллекции
+        collectionView.dataSource = self // Установка источника данных для коллекции
+        collectionView.register(CoffeeImageCell.self, forCellWithReuseIdentifier: "CoffeeImageCell") // Регистрация ячейки для использования в коллекции
+
         
         // Добавляем коллекцию к представлению и настраиваем ее ограничения
         view.addSubview(collectionView)
@@ -148,7 +156,7 @@ class CoffeeViewController: UIViewController   {
     func setupCoffeeCup(){
         // Настраиваем изображение coffeeCupImage
         coffeeCupImage.image = UIImage(named: "coffeeCup")
-        coffeeCupImage.tintColor = UIColor(hex:"CFCFCF")
+        coffeeCupImage.tintColor = UIColor(named:"CFCFCF")
         view.addSubview(coffeeCupImage)
         coffeeCupImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([coffeeCupImage.widthAnchor.constraint(equalToConstant: 100),//Устанавливает констрейнт на ширину
@@ -158,11 +166,10 @@ class CoffeeViewController: UIViewController   {
     }
     func setupPicker(){
         // Настраиваем pickerView
-        pickerView.backgroundColor = UIColor(hex: "28313A")
+        pickerView.backgroundColor = UIColor(named: "28313A")
         pickerView.alpha = 0.5
         pickerView.translatesAutoresizingMaskIntoConstraints = false
         pickerView.layer.cornerRadius = 10
-        
         
         view.addSubview(pickerView)
         view.addSubview(picker)
@@ -173,7 +180,6 @@ class CoffeeViewController: UIViewController   {
             picker.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 50),//Размещает центр picker по горизонтали в центре основног (view), вправо
             picker.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 180),//Размещает центр picker по вертикали в центре основного  (view),  вниз
             picker.heightAnchor.constraint(equalTo: view.heightAnchor, constant: -680),//Устанавливает высоту picker так, чтобы она занимала высоту основного представления (view) за вычетом
-            //580 impiric method
             
             // Констрейнты для pickerView
             pickerView.widthAnchor.constraint(equalToConstant: 230),//Устанавливает ширину pickerView в 230 точек.
@@ -219,15 +225,22 @@ extension CoffeeViewController: UIPickerViewDataSource, UIPickerViewDelegate{
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         pickerCount.count
-        //Каждая строка будет представлять число от 0 до 10, так как pickerCount создан как массив от 0 до 10 включительно.
+        //Каждая строка будет представлять число от 0 до 10
     }
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        // Получение текста для строки в PickerView
         let title = "\(row)"
-        let color = UIColor(hex: "CFCFCF")!
         
+        // Установка цвета
+        let color = UIColor(named: "CFCFCF")!
+        
+        // Создание атрибутов текста с указанием цвета
         let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: color]
+        
+        // Создание NSAttributedString с указанным текстом и атрибутами
         return NSAttributedString(string: title, attributes: attributes)
     }
+
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return "\(row)"
@@ -239,12 +252,15 @@ extension CoffeeViewController: UIPickerViewDataSource, UIPickerViewDelegate{
         selectedCount = row
         print(selectedCount)
         
+        // Сохраняем выбранное количество и значение Piker в UserDefaults
+        saveSelectedCount()
+        saveSelectedPickerRow()
+        
         // Вызываем reloadData() для обновления данных в коллекции после изменения выбранного числа чашек
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
     }
-
 }
 
 extension CoffeeViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource{
@@ -255,19 +271,26 @@ extension CoffeeViewController: UICollectionViewDelegateFlowLayout, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // Отвечает за создание и настройку ячейки коллекции.
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CoffeeCell.identifier, for: indexPath) as! CoffeeCell
+        // Получаем ячейку из пула переиспользования
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CoffeeCell.identifier, for: indexPath) as! CoffeeCell
+        
+        // Проверяем, что индекс строки меньше выбранного количества чашек
+        if indexPath.row < selectedCount {
+            // Получаем тип кофе для данного индекса строки
+            let coffeeType = Constants.CoffeeType(rawValue: "coffee-cup-\(indexPath.row + 1)")
             
-            // Проверяем, чтобы индекс строки был меньше чем количество изображений в массиве coffeeImages
-            if indexPath.row < coffeeImages.count {
-                let imageName = coffeeImages[indexPath.row]
-                cell.updateCups(cup: UIImage(named: imageName)!)
-            }
-            return cell
+            // Получаем имя изображения чашки кофе или используем пустую строку, если кофе не найдено
+            let imageName = coffeeType?.rawValue ?? ""
+            
+            // Обновляем содержимое ячейки с использованием изображения чашки кофе
+            cell.updateCups(cup: UIImage(named: imageName)!)
+        }
+        return cell
     }
+
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+        // Этот метод определяет размеры каждой ячейки в коллекции.
 
         // Рассчитываем ширину ячейки так, чтобы уместить numberOfColumns ячеек в ряд
         let cellWidth = (collectionView.frame.width - (Constants.numberOfColumns - 1) * Constants.interitemSpacing) / Constants.numberOfColumns
@@ -275,12 +298,42 @@ extension CoffeeViewController: UICollectionViewDelegateFlowLayout, UICollection
         // Рассчитываем высоту ячейки, учитывая дополнительную высоту
         let cellHeight = collectionView.frame.height / Constants.numberOfColumns + Constants.additionalHeight
 
-
         return CGSize(width: cellWidth, height: cellHeight)
-        //Здесь вы устанавливаете размеры ячеек. Размеры зависят от ширины и высоты коллекции.
-        //Количество колонок установлено в 5, и от каждой ячейки вычитается 10 единиц ширины
-        //(это для учета отступов между ячейками), а к высоте прибавляется 30 (это просто для увеличения высоты ячейки).
     }
+}
+
+extension CoffeeViewController {
+    // Сохранение выбранного количества чашек
+    func saveSelectedCount() {
+        UserDefaults.standard.set(selectedCount, forKey: "SelectedCoffeeCount")
+    }
+    
+    // Сохранение выбранной строки в pickerView
+    func saveSelectedPickerRow() {
+        // Получаем индекс выбранной строки в UIPickerView и сохраняем его в UserDefaults под ключом "SelectedPickerRow"
+        let selectedRow = picker.selectedRow(inComponent: 0)
+        UserDefaults.standard.set(selectedRow, forKey: "SelectedPickerRow")
+    }
+
+    
+    // Загрузка выбранного количества чашек
+    func loadSelectedCount() {
+        // Проверяем, есть ли сохраненное значение для ключа "SelectedCoffeeCount" в UserDefaults
+        if let savedCount = UserDefaults.standard.value(forKey: "SelectedCoffeeCount") as? Int {
+            // Если значение найдено, устанавливаем выбранное количество чашек
+            selectedCount = savedCount
+        }
+    }
+    
+    // Загрузка выбранной строки в pickerView
+    func loadSelectedPickerRow() {
+        // Проверяем, есть ли сохраненное значение для ключа "SelectedPickerRow" в UserDefaults
+        if let savedRow = UserDefaults.standard.value(forKey: "SelectedPickerRow") as? Int {
+            // Если значение найдено, устанавливаем выбранную строку в UIPickerView равной сохраненному значению
+            picker.selectRow(savedRow, inComponent: 0, animated: false)
+        }
+    }
+
 }
 
 
